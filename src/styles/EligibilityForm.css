@@ -1,0 +1,154 @@
+.eligibility-section {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.eligibility-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.eligibility-header h2 {
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  margin-bottom: 15px;
+}
+
+.eligibility-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 400px;
+  position: relative;
+}
+
+.form-step {
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.checkbox-group {
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.radio-group {
+  margin-top: 10px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radio-item input[type="radio"] {
+  margin-right: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.btn-prev {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-prev:hover {
+  background-color: #5a6268;
+}
+
+.form-question {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--dark-color);
+}
+
+.form-description {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .eligibility-section {
+    padding: 60px 0;
+  }
+  
+  .eligibility-header h2 {
+    font-size: 2rem;
+  }
+  
+  .eligibility-header p {
+    font-size: 1rem;
+  }
+  
+  .form-step {
+    padding: 20px;
+  }
+  
+  .form-question {
+    font-size: 1.1rem;
+  }
+} 
