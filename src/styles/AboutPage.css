@@ -1,0 +1,377 @@
+/* About Page Styles */
+.about-page {
+  color: #333;
+}
+
+.about-header {
+  background: linear-gradient(135deg, #1a3a3a, #2c5364);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.about-header .tagline {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #1a3a3a;
+}
+
+.mission-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* CTA Box Styles */
+.cta-box {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 40px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.cta-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #1a3a3a;
+}
+
+.cta-box .btn {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+
+.cta-box.urgent {
+  background-color: #fff8e6;
+  border-left: 5px solid #f0b429;
+}
+
+/* Expertise Section */
+.expertise-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.expertise-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #1a3a3a;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.expertise-card {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expertise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.expertise-card .icon {
+  font-size: 2.5rem;
+  color: #2c5364;
+  margin-bottom: 20px;
+}
+
+.expertise-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #1a3a3a;
+}
+
+.expertise-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Approach Section */
+.approach-section {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.approach-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.approach-content h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #1a3a3a;
+}
+
+.approach-content > p {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.approach-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.feature h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #1a3a3a;
+}
+
+.feature p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Testimonial */
+.testimonial {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  margin: 40px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial blockquote {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.testimonial blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  color: #e0e0e0;
+}
+
+.testimonial cite {
+  font-weight: 600;
+  display: block;
+  text-align: right;
+  color: #1a3a3a;
+}
+
+/* Team Section */
+.team-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.team-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #1a3a3a;
+}
+
+.section-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.member-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  margin: 0 auto 20px;
+}
+
+.team-member h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  color: #1a3a3a;
+}
+
+.member-title {
+  color: #2c5364;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.team-member p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* CTA Centered */
+.cta-centered {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.cta-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a3a3a;
+}
+
+/* Final CTA Section */
+.final-cta-section {
+  padding: 80px 0;
+  background-color: #1a3a3a;
+  color: white;
+  text-align: center;
+}
+
+.final-cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.final-cta-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-cta-buttons {
+  margin-top: 40px;
+}
+
+.btn-xl {
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  margin: 10px;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #2c5364;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1a3a3a;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #f0b429;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-header {
+    padding: 60px 0;
+  }
+  
+  .about-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .mission-content h2,
+  .expertise-section h2,
+  .approach-content h2,
+  .team-section h2,
+  .final-cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .mission-content p,
+  .approach-content > p,
+  .final-cta-section p {
+    font-size: 1.1rem;
+  }
+  
+  .cta-box {
+    padding: 20px;
+  }
+  
+  .expertise-grid,
+  .approach-features,
+  .team-grid {
+    gap: 20px;
+  }
+  
+  .testimonial {
+    padding: 30px;
+  }
+  
+  .btn-xl {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+  }
+} 
