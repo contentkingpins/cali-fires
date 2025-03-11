@@ -4,7 +4,7 @@
   min-height: 600px;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #1a3a3a, #2c5364);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('/images/california-landscape.jpg');
   background-size: cover;
   background-position: center;
   color: white;
