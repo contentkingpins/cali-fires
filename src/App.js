@@ -4,11 +4,13 @@ import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ResourcesPage from './pages/ResourcesPage';
+import Navigation from './components/Navigation';
 import './App.css';
 
 function App() {
   return (
     <Router>
+      <Navigation />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
