@@ -14,13 +14,15 @@ const Hero = ({ scrollToEligibility }) => {
       { threshold: 0.1 }
     );
     
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
+    const currentHeroRef = heroRef.current;
+    
+    if (currentHeroRef) {
+      observer.observe(currentHeroRef);
     }
     
     return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
+      if (currentHeroRef) {
+        observer.unobserve(currentHeroRef);
       }
     };
   }, []);

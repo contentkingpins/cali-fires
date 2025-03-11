@@ -76,7 +76,7 @@ const ResourcesPage = () => {
               <div className="resource-download">
                 <h3>Free Download: Post-Wildfire Checklist</h3>
                 <p>Our comprehensive checklist helps you track all necessary steps in the days and weeks following a wildfire.</p>
-                <a href="#" className="btn btn-outline">Download PDF Checklist</a>
+                <a href="/downloads/post-wildfire-checklist.pdf" className="btn btn-outline">Download PDF Checklist</a>
               </div>
             </div>
             
@@ -200,7 +200,7 @@ const ResourcesPage = () => {
               <div className="resource-download">
                 <h3>Free Download: Insurance Claim Tracker</h3>
                 <p>Our comprehensive spreadsheet helps you document all aspects of your insurance claim process.</p>
-                <a href="#" className="btn btn-outline">Download Claim Tracker</a>
+                <a href="/downloads/insurance-claim-tracker.xlsx" className="btn btn-outline">Download Claim Tracker</a>
               </div>
             </div>
             

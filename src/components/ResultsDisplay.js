@@ -74,10 +74,10 @@ const ResultsDisplay = () => {
             <div className="results-resources">
               <h3>Additional Resources</h3>
               <ul>
-                <li><a href="#">California Wildfire Recovery Resources</a></li>
-                <li><a href="#">FEMA Disaster Assistance</a></li>
-                <li><a href="#">California Department of Insurance</a></li>
-                <li><a href="#">Legal Aid Foundation of Los Angeles</a></li>
+                <li><a href="https://www.caloes.ca.gov/individuals-families/wildfires/">California Wildfire Recovery Resources</a></li>
+                <li><a href="https://www.fema.gov/disaster/current">FEMA Disaster Assistance</a></li>
+                <li><a href="https://www.insurance.ca.gov/01-consumers/140-catastrophes/WildfireResources.cfm">California Department of Insurance</a></li>
+                <li><a href="https://lafla.org/help/disaster-relief/">Legal Aid Foundation of Los Angeles</a></li>
               </ul>
             </div>
           </motion.div>
