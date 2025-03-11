@@ -1,9 +1,25 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Navigation.css';
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  
+  const handleEligibilityClick = (e) => {
+    e.preventDefault();
+    
+    // If we're already on the home page, just scroll to the eligibility form
+    if (location.pathname === '/') {
+      const eligibilityElement = document.querySelector('[data-id="eligibility-form"]');
+      if (eligibilityElement) {
+        eligibilityElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If we're on another page, navigate to home page and then scroll
+      navigate('/', { state: { scrollToEligibility: true } });
+    }
+  };
   
   return (
     <nav className="main-navigation">
@@ -26,7 +42,7 @@ const Navigation = () => {
               <Link to="/resources">Resources</Link>
             </li>
             <li className="cta-button">
-              <Link to="/#eligibility-form" className="btn btn-primary">Check Eligibility</Link>
+              <a href="#eligibility-form" className="btn btn-primary" onClick={handleEligibilityClick}>Check Eligibility</a>
             </li>
           </ul>
         </div>
