@@ -41,6 +41,9 @@ const Navigation = () => {
             <li className={location.pathname === '/resources' ? 'active' : ''}>
               <Link to="/resources">Resources</Link>
             </li>
+            <li className={location.pathname === '/wildfire-info' ? 'active' : ''}>
+              <Link to="/wildfire-info">2025 Wildfires</Link>
+            </li>
             <li className="cta-button">
               <a href="#eligibility-form" className="btn btn-primary" onClick={handleEligibilityClick}>Check Eligibility</a>
             </li>
