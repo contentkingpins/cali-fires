@@ -14,7 +14,7 @@ import UtilityProvider from './form-steps/UtilityProvider';
 import ContactInfo from './form-steps/ContactInfo';
 
 const EligibilityForm = ({ scrollToResults }) => {
-  const { eligibilityData, setEligibilityResult } = useContext(EligibilityContext);
+  const { setEligibilityResult } = useContext(EligibilityContext);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     wildfire: '',

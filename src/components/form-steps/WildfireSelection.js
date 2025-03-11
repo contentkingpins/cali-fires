@@ -11,7 +11,7 @@ const WildfireSelection = ({ formData, handleInputChange, nextStep }) => {
   
   return (
     <div>
-      <h3 className="form-question">Which 2025 California wildfire were you affected by?</h3>
+      <h3 className="form-question">Which 2023 California wildfire were you affected by?</h3>
       <p className="form-description">Select the wildfire that impacted you or your property.</p>
       
       <div className="radio-group">
