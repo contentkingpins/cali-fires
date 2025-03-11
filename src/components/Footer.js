@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -24,11 +25,11 @@ const Footer = () => {
           <div className="footer-section links">
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Resources</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/resources">Resources</Link></li>
+              <li><Link to="/wildfire-info">2025 Wildfires</Link></li>
             </ul>
           </div>
         </div>
@@ -46,9 +47,9 @@ const Footer = () => {
           
           <div className="footer-bottom">
             <div className="footer-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Disclaimer</a>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms of Service</Link>
+              <Link to="/disclaimer">Disclaimer</Link>
             </div>
             <p className="copyright">
               &copy; {new Date().getFullYear()} California Wildfire Claims Lawyers. All Rights Reserved.
