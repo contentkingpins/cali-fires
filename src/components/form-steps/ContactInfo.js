@@ -1,74 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit }) => {
+const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSubmitting, submitError }) => {
+  const [errors, setErrors] = useState({});
+  
   const validateForm = () => {
-    // Basic validation
+    const newErrors = {};
+    
+    // Validate first name
     if (!formData.firstName.trim()) {
-      alert('Please enter your first name');
-      return false;
+      newErrors.firstName = 'First name is required';
     }
     
+    // Validate last name
     if (!formData.lastName.trim()) {
-      alert('Please enter your last name');
-      return false;
+      newErrors.lastName = 'Last name is required';
     }
     
-    if (!formData.email.trim() || !isValidEmail(formData.email)) {
-      alert('Please enter a valid email address');
-      return false;
-    }
-    
-    if (!formData.phone.trim() || !isValidPhone(formData.phone)) {
-      alert('Please enter a valid phone number');
-      return false;
-    }
-    
-    if (!formData.zipCode.trim() || !isValidZipCode(formData.zipCode)) {
-      alert('Please enter a valid ZIP code');
-      return false;
-    }
-    
-    return true;
-  };
-  
-  const isValidEmail = (email) => {
+    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-  
-  const isValidPhone = (phone) => {
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    // Validate phone
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    return phoneRegex.test(phone);
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
+    
+    // Validate zip code
+    const zipRegex = /^\d{5}(-\d{4})?$/;
+    if (!formData.zipCode.trim()) {
+      newErrors.zipCode = 'ZIP code is required';
+    } else if (!zipRegex.test(formData.zipCode)) {
+      newErrors.zipCode = 'Please enter a valid ZIP code';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
   
-  const isValidZipCode = (zipCode) => {
-    const zipCodeRegex = /^\d{5}(-\d{4})?$/;
-    return zipCodeRegex.test(zipCode);
-  };
-  
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (e) => {
     if (validateForm()) {
       handleSubmit(e);
+    } else {
+      e.preventDefault();
     }
   };
   
   return (
     <div>
       <h3 className="form-question">Contact Information</h3>
-      <p className="form-description">Please provide your contact details so we can reach out to you.</p>
+      <p className="form-description">Please provide your contact details so we can get in touch with you about your claim.</p>
       
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="firstName">First Name</label>
           <input 
             type="text" 
             id="firstName" 
-            className="form-control" 
             value={formData.firstName} 
             onChange={(e) => handleInputChange('firstName', e.target.value)} 
-            required 
+            className={errors.firstName ? 'error' : ''}
           />
+          {errors.firstName && <div className="error-message">{errors.firstName}</div>}
         </div>
         
         <div className="form-group">
@@ -76,11 +75,11 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit }) =>
           <input 
             type="text" 
             id="lastName" 
-            className="form-control" 
             value={formData.lastName} 
             onChange={(e) => handleInputChange('lastName', e.target.value)} 
-            required 
+            className={errors.lastName ? 'error' : ''}
           />
+          {errors.lastName && <div className="error-message">{errors.lastName}</div>}
         </div>
         
         <div className="form-group">
@@ -88,11 +87,11 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit }) =>
           <input 
             type="email" 
             id="email" 
-            className="form-control" 
             value={formData.email} 
             onChange={(e) => handleInputChange('email', e.target.value)} 
-            required 
+            className={errors.email ? 'error' : ''}
           />
+          {errors.email && <div className="error-message">{errors.email}</div>}
         </div>
         
         <div className="form-group">
@@ -100,12 +99,12 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit }) =>
           <input 
             type="tel" 
             id="phone" 
-            className="form-control" 
             value={formData.phone} 
             onChange={(e) => handleInputChange('phone', e.target.value)} 
-            placeholder="(123) 456-7890" 
-            required 
+            placeholder="(123) 456-7890"
+            className={errors.phone ? 'error' : ''}
           />
+          {errors.phone && <div className="error-message">{errors.phone}</div>}
         </div>
         
         <div className="form-group">
@@ -113,30 +112,37 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit }) =>
           <input 
             type="text" 
             id="zipCode" 
-            className="form-control" 
             value={formData.zipCode} 
             onChange={(e) => handleInputChange('zipCode', e.target.value)} 
-            placeholder="12345" 
-            required 
+            className={errors.zipCode ? 'error' : ''}
           />
+          {errors.zipCode && <div className="error-message">{errors.zipCode}</div>}
         </div>
         
-        <div className="form-group">
-          <div className="checkbox-item">
-            <input 
-              type="checkbox" 
-              id="consent" 
-              required 
-            />
-            <label htmlFor="consent">
-              I consent to being contacted by phone, email, or text message. I understand that submitting this form does not establish an attorney-client relationship.
-            </label>
+        {submitError && (
+          <div className="submit-error-message">
+            <p>{submitError}</p>
+            <p>Please try again or call us directly at (800) 555-1234 for assistance.</p>
           </div>
+        )}
+        
+        <div className="privacy-notice">
+          <p>
+            By submitting this form, you agree to our <a href="/privacy" target="_blank">Privacy Policy</a> and 
+            <a href="/terms" target="_blank">Terms of Service</a>. We will use your information to evaluate your 
+            potential claim and contact you about legal representation.
+          </p>
         </div>
         
         <div className="form-buttons">
-          <button type="button" className="btn btn-prev" onClick={prevStep}>Back</button>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
+          <button 
+            type="submit" 
+            className="btn btn-primary"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
         </div>
       </form>
     </div>

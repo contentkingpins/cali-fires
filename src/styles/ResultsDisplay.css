@@ -119,4 +119,75 @@
     padding: 12px 24px;
     font-size: 1rem;
   }
+}
+
+/* Add styles for the reference number section */
+.reference-number {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 3px solid #2c5364;
+  text-align: center;
+}
+
+.reference-number p {
+  margin: 5px 0;
+}
+
+.reference-number strong {
+  font-size: 1.1rem;
+  color: #2c5364;
+  letter-spacing: 1px;
+}
+
+.reference-note {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Add styles for the submit error message in the form */
+.submit-error-message {
+  background-color: #fff0f0;
+  border-left: 3px solid #e74c3c;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.submit-error-message p {
+  margin: 5px 0;
+  color: #c0392b;
+}
+
+/* Add styles for form validation errors */
+.error {
+  border-color: #e74c3c !important;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Add styles for the privacy notice */
+.privacy-notice {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.privacy-notice a {
+  color: #2c5364;
+  text-decoration: underline;
+  margin: 0 3px;
+}
+
+.privacy-notice a:hover {
+  color: #1a3a3a;
 } 

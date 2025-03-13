@@ -10,7 +10,7 @@ const ResultsDisplay = () => {
     return null;
   }
   
-  const { isEligible, formData } = eligibilityResult;
+  const { isEligible, formData, lead_id } = eligibilityResult;
   
   return (
     <section className="results-section" id="results">
@@ -30,6 +30,12 @@ const ResultsDisplay = () => {
               Based on your responses, you may be eligible to pursue a claim for the {formData.wildfire} Fire. 
               Our team of experienced wildfire attorneys is ready to help you get the compensation you deserve.
             </p>
+            {lead_id && (
+              <div className="reference-number">
+                <p>Your reference number: <strong>{lead_id}</strong></p>
+                <p className="reference-note">Please save this number for your records.</p>
+              </div>
+            )}
             <div className="results-cta">
               <a href="tel:8005551234" className="btn btn-primary btn-lg">
                 <i className="fas fa-phone-alt"></i> Call a Claim Specialist Now
@@ -63,6 +69,12 @@ const ResultsDisplay = () => {
               Based on your responses, we need additional information to determine if we can assist with your claim. 
               Every situation is unique, and our team would like to learn more about your specific circumstances.
             </p>
+            {lead_id && (
+              <div className="reference-number">
+                <p>Your reference number: <strong>{lead_id}</strong></p>
+                <p className="reference-note">Please save this number for your records.</p>
+              </div>
+            )}
             <div className="results-cta">
               <a href="tel:8005551234" className="btn btn-secondary btn-lg">
                 <i className="fas fa-phone-alt"></i> Speak with a Specialist
@@ -74,10 +86,10 @@ const ResultsDisplay = () => {
             <div className="results-resources">
               <h3>Additional Resources</h3>
               <ul>
-                <li><a href="https://www.caloes.ca.gov/individuals-families/wildfires/">California Wildfire Recovery Resources</a></li>
-                <li><a href="https://www.fema.gov/disaster/current">FEMA Disaster Assistance</a></li>
-                <li><a href="https://www.insurance.ca.gov/01-consumers/140-catastrophes/WildfireResources.cfm">California Department of Insurance</a></li>
-                <li><a href="https://lafla.org/help/disaster-relief/">Legal Aid Foundation of Los Angeles</a></li>
+                <li><a href="https://www.caloes.ca.gov/individuals-families/wildfires/" target="_blank" rel="noopener noreferrer">California Wildfire Recovery Resources</a></li>
+                <li><a href="https://www.fema.gov/disaster/current" target="_blank" rel="noopener noreferrer">FEMA Disaster Assistance</a></li>
+                <li><a href="https://www.insurance.ca.gov/01-consumers/140-catastrophes/WildfireResources.cfm" target="_blank" rel="noopener noreferrer">California Department of Insurance</a></li>
+                <li><a href="https://lafla.org/help/disaster-relief/" target="_blank" rel="noopener noreferrer">Legal Aid Foundation of Los Angeles</a></li>
               </ul>
             </div>
           </motion.div>

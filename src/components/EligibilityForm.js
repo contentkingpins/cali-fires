@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EligibilityContext } from '../context/EligibilityContext';
+import { submitToDynamoDB } from '../services/awsService';
 import '../styles/EligibilityForm.css';
 
 // Form steps components
@@ -16,6 +17,8 @@ import ContactInfo from './form-steps/ContactInfo';
 const EligibilityForm = ({ scrollToResults }) => {
   const { setEligibilityResult } = useContext(EligibilityContext);
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [formData, setFormData] = useState({
     wildfire: '',
     lossTypes: [],
@@ -53,20 +56,41 @@ const EligibilityForm = ({ scrollToResults }) => {
     }
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Determine eligibility based on form data
-    const isEligible = determineEligibility(formData);
+    // Reset error state
+    setSubmitError(null);
     
-    // Set the eligibility result in context
-    setEligibilityResult({
-      isEligible,
-      formData
-    });
+    // Set submitting state to show loading indicator
+    setIsSubmitting(true);
     
-    // Scroll to results section
-    scrollToResults();
+    try {
+      // Submit form data to DynamoDB
+      const result = await submitToDynamoDB(formData);
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Failed to submit form data');
+      }
+      
+      // Determine eligibility based on form data
+      const isEligible = determineEligibility(formData);
+      
+      // Set the eligibility result in context
+      setEligibilityResult({
+        isEligible,
+        formData,
+        lead_id: result.lead_id
+      });
+      
+      // Scroll to results section
+      scrollToResults();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitError(error.message || 'An error occurred while submitting your information. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   const determineEligibility = (data) => {
@@ -179,7 +203,9 @@ const EligibilityForm = ({ scrollToResults }) => {
             formData={formData} 
             handleInputChange={handleInputChange} 
             prevStep={prevStep} 
-            handleSubmit={handleSubmit} 
+            handleSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
+            submitError={submitError}
           />
         );
       default:
