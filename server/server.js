@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const AWS = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
+const fireClaimRoutes = require('./api/fire-claim');
 
 // Configure AWS SDK
 AWS.config.update({
@@ -61,6 +62,9 @@ app.post('/api/submit-lead', async (req, res) => {
     });
   }
 });
+
+// Use fire claim routes
+app.use('/api', fireClaimRoutes);
 
 // Start the server
 app.listen(PORT, () => {

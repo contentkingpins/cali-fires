@@ -6,6 +6,7 @@ import ServicesPage from './pages/ServicesPage';
 import ResourcesPage from './pages/ResourcesPage';
 import WildfireInfoPage from './pages/WildfireInfoPage';
 import LegalPage from './pages/LegalPage';
+import FireClaimPage from './pages/FireClaimPage';
 import Navigation from './components/Navigation';
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/wildfire-info" element={<WildfireInfoPage />} />
+        <Route path="/fire-claim" element={<FireClaimPage />} />
         <Route path="/privacy" element={<LegalPage />} />
         <Route path="/terms" element={<LegalPage />} />
         <Route path="/disclaimer" element={<LegalPage />} />
