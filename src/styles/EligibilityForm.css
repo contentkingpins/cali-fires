@@ -51,11 +51,15 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
+  text-align: center;
 }
 
 .form-group {
   margin-bottom: 25px;
+  width: 100%;
+  max-width: 450px;
 }
 
 .form-group label {
@@ -79,19 +83,42 @@
   outline: none;
 }
 
-.checkbox-group {
+.form-question {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.form-description {
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.checkbox-group,
+.radio-group {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-start;
 }
 
-.checkbox-item {
+.checkbox-item,
+.radio-item {
   display: flex;
   align-items: center;
   margin-bottom: 0;
   min-height: 24px;
   padding: 4px 0;
+  width: 100%;
+  text-align: left;
 }
 
 .checkbox-item input[type="checkbox"] {
@@ -104,45 +131,41 @@
   margin-bottom: 0;
 }
 
-.radio-group {
-  margin-top: 10px;
-}
-
-.radio-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
 .radio-item input[type="radio"] {
   margin-right: 10px;
+  min-width: 18px;
+  min-height: 18px;
+}
+
+.radio-item label {
+  margin-bottom: 0;
 }
 
 .form-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 25px;
+  width: 100%;
+  max-width: 450px;
 }
 
-.btn-prev {
-  background-color: #6c757d;
+.form-buttons button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  min-width: 100px;
+}
+
+.btn-primary {
+  background-color: #d32f2f;
   color: white;
 }
 
-.btn-prev:hover {
-  background-color: #5a6268;
-}
-
-.form-question {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--dark-color);
-}
-
-.form-description {
-  color: #666;
-  margin-bottom: 25px;
+.btn-prev {
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 /* Additional fix for the eligibility form checkboxes */
@@ -216,5 +239,10 @@
   
   .form-question {
     font-size: 1.1rem;
+  }
+  
+  .form-buttons {
+    width: 100%;
+    max-width: 100%;
   }
 } 
