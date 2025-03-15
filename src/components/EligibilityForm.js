@@ -52,7 +52,32 @@ const EligibilityForm = ({ scrollToResults }) => {
   
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      // Special handling for back navigation
+      if (currentStep === 5) {
+        // We're on the LossAmount page
+        // Check if we need to go back to MedicalAttention or skip it
+        if (formData.lossTypes.includes('injury')) {
+          setCurrentStep(4); // Go back to medical attention step
+        } else {
+          // Skip MedicalAttention step
+          if (formData.lossTypes.includes('property')) {
+            setCurrentStep(3); // Go back to insurance verification
+          } else {
+            setCurrentStep(2); // Go back to loss type selection
+          }
+        }
+      } else if (currentStep === 4) {
+        // We're on the MedicalAttention page
+        // Check if we need to go back to InsuranceVerification or skip it
+        if (formData.lossTypes.includes('property')) {
+          setCurrentStep(3); // Go back to insurance verification
+        } else {
+          setCurrentStep(2); // Go back to loss type selection
+        }
+      } else {
+        // Default back navigation for other steps
+        setCurrentStep(currentStep - 1);
+      }
     }
   };
   
