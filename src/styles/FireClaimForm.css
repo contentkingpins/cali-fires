@@ -172,3 +172,60 @@ input:focus, select:focus {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 } 
+
+/* Radio button styling */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.radio-item input[type="radio"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+.radio-item label {
+  margin-bottom: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Form step styling */
+.form-step {
+  margin-bottom: 25px;
+}
+
+.form-question {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-buttons button:hover {
+  background-color: #b71c1c;
+}
