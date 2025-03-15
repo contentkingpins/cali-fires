@@ -9,6 +9,7 @@ import LegalPage from './pages/LegalPage';
 import FireClaimPage from './pages/FireClaimPage';
 import Navigation from './components/Navigation';
 import './App.css';
+import './styles/FormFixes.css';
 
 function App() {
   return (

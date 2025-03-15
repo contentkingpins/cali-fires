@@ -1,0 +1,63 @@
+/**
+ * FormFixes.css - Targeted fixes for form layout issues
+ * These styles specifically address the form layout issues visible in the screenshot
+ */
+
+/* Target the form step with the checkboxes */
+.form-step {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Fix checkbox alignment */
+.form-step input[type="checkbox"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Target the specific form with losses/damages checkboxes */
+.form-step h3.form-question + p + div,
+.form-step:has(h3:contains("loss or damage")) div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  row-gap: 16px;
+  align-items: center;
+  padding: 5px 0;
+  margin: 15px 0;
+}
+
+/* Very specific selectors to target the structure in the screenshot */
+.form-step div > input[type="checkbox"] {
+  margin-right: 12px;
+  grid-column: 1;
+}
+
+.form-step div > input[type="checkbox"] + * {
+  grid-column: 2;
+}
+
+/* Fix for the continue/back buttons */
+.form-step .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+/* Override any conflicting styles */
+.form-step div:has(input[type="checkbox"]):not(.checkbox-item) {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+/* Media queries for responsive behavior */
+@media (max-width: 768px) {
+  .form-step h3.form-question + p + div,
+  .form-step:has(h3:contains("loss or damage")) div {
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    row-gap: 12px;
+  }
+} 
