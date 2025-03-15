@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/FireClaimForm.css';
@@ -119,15 +120,19 @@ const FireClaimForm = () => {
         setSubmitResult('success');
         
         // Track conversion in Google Tag Manager
-        if (window.dataLayer) {
-          window.dataLayer.push({
-            event: 'leadSubmission',
-            leadStatus: 'accepted'
-          });
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          try {
+            window.dataLayer.push({
+              event: 'leadSubmission',
+              leadStatus: 'accepted'
+            });
+          } catch (e) {
+            console.error('Error pushing to dataLayer:', e);
+          }
         }
         
         // Track conversion in Facebook Pixel
-        if (typeof fbq === 'function') {
+        if (typeof window !== 'undefined' && typeof fbq === 'function') {
           fbq('track', 'Lead');
         }
         

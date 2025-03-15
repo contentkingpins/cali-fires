@@ -15,11 +15,17 @@
     <title>California Wildfire Claims Eligibility</title>
     
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXX');</script>
+    <script>
+    try {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-XXXX');
+    } catch (e) {
+      console.log('Google Tag Manager not initialized properly');
+    }
+    </script>
     <!-- End Google Tag Manager -->
     
     <!-- Facebook Pixel Code -->
@@ -32,8 +38,14 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'FACEBOOK_PIXEL_ID');
-    fbq('track', 'PageView');
+    // Initialize with a placeholder ID if real ID isn't available
+    // Replace FACEBOOK_PIXEL_ID with your actual Pixel ID in production
+    try {
+      fbq('init', 'FACEBOOK_PIXEL_ID');
+      fbq('track', 'PageView');
+    } catch (e) {
+      console.log('Facebook Pixel not initialized properly');
+    }
     </script>
     <noscript>
     <img height="1" width="1" style="display:none"
