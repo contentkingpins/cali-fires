@@ -49,6 +49,9 @@
 
 .form-step {
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
@@ -77,13 +80,16 @@
 }
 
 .checkbox-group {
-  margin-top: 10px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .checkbox-item input[type="checkbox"] {
@@ -146,6 +152,7 @@
   
   .form-step {
     padding: 20px;
+    gap: 15px;
   }
   
   .form-question {
