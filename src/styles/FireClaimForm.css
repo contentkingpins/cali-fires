@@ -201,6 +201,9 @@ input:focus, select:focus {
 /* Form step styling */
 .form-step {
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-question {
