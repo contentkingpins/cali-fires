@@ -90,10 +90,18 @@
   display: flex;
   align-items: center;
   margin-bottom: 0;
+  min-height: 24px;
+  padding: 4px 0;
 }
 
 .checkbox-item input[type="checkbox"] {
   margin-right: 10px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.checkbox-item label {
+  margin-bottom: 0;
 }
 
 .radio-group {
