@@ -99,15 +99,13 @@
 
 .checkbox-group,
 .radio-group {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  grid-template-columns: none !important;
   width: 100%;
   max-width: 450px;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: flex-start;
+  margin: 15px auto;
 }
 
 .checkbox-item,
@@ -121,20 +119,19 @@
   text-align: left;
 }
 
-.checkbox-item input[type="checkbox"] {
-  margin-right: 10px;
-  min-width: 16px;
-  min-height: 16px;
+.checkbox-item input[type="checkbox"],
+.radio-item input[type="radio"] {
+  margin-right: 10px !important;
+  width: 18px !important;
+  height: 18px !important;
+  -webkit-appearance: radio !important;
+  -moz-appearance: radio !important;
+  appearance: radio !important;
+  border-radius: 50% !important;
 }
 
 .checkbox-item label {
   margin-bottom: 0;
-}
-
-.radio-item input[type="radio"] {
-  margin-right: 10px;
-  min-width: 18px;
-  min-height: 18px;
 }
 
 .radio-item label {
@@ -170,25 +167,10 @@
 
 /* Additional fix for the eligibility form checkboxes */
 .form-step .checkbox-group {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px 15px;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.form-step .checkbox-group input[type="checkbox"] {
-  margin: 0;
-  justify-self: end;
-  width: 18px;
-  height: 18px;
-}
-
-.form-step .checkbox-group label {
-  margin: 0;
-  padding: 6px 0;
-  font-size: 16px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  grid-template-columns: none !important;
 }
 
 /* Fix for the specific layout in the eligibility form */
@@ -244,5 +226,21 @@
   .form-buttons {
     width: 100%;
     max-width: 100%;
+  }
+}
+
+/* Ensure damage type selection page is in one column */
+.form-step:has(h3:contains("loss or damage")) .checkbox-group,
+.form-step:has(h3:contains("loss or damage")) > div:not(.form-buttons) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  grid-template-columns: none !important;
+}
+
+@media all {
+  /* Force override any conflicting grid layouts */
+  .form-step * {
+    grid-template-columns: none !important;
   }
 } 

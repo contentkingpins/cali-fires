@@ -302,3 +302,31 @@ input:focus, select:focus {
     padding: 8px 15px 8px 0;
   }
 }
+
+/* Override for checkbox appearance - make them look like radio buttons */
+.checkbox-item input[type="checkbox"],
+.fire-claim-form-container input[type="checkbox"] {
+  -webkit-appearance: radio !important;
+  -moz-appearance: radio !important;
+  appearance: radio !important;
+  border-radius: 50% !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Force single column layout */
+.fire-claim-form-container .checkbox-group,
+.form-step .checkbox-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  grid-template-columns: none !important;
+  margin: 15px auto;
+}
+
+/* Eliminate any two-column layouts */
+@media all {
+  .fire-claim-form-container * {
+    grid-template-columns: none !important;
+  }
+}
