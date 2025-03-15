@@ -243,4 +243,51 @@
   .form-step * {
     grid-template-columns: none !important;
   }
+}
+
+/* Custom radio-style checkboxes */
+.form-step:has(h3:contains("loss or damage")) input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-step:has(h3:contains("loss or damage")) input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 20px;
+}
+
+.form-step:has(h3:contains("loss or damage")) input[type="checkbox"] + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #999;
+  border-radius: 50%;
+  background: white;
+}
+
+.form-step:has(h3:contains("loss or damage")) input[type="checkbox"]:checked + label:before {
+  border-color: #d32f2f;
+}
+
+.form-step:has(h3:contains("loss or damage")) input[type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d32f2f;
 } 

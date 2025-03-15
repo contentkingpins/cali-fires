@@ -330,3 +330,65 @@ input:focus, select:focus {
     grid-template-columns: none !important;
   }
 }
+
+/* Custom radio-style checkboxes - complete replacement */
+.fire-claim-form-container input[type="checkbox"],
+.form-step input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+}
+
+.fire-claim-form-container input[type="checkbox"] + label,
+.form-step input[type="checkbox"] + label {
+  position: relative !important;
+  padding-left: 28px !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  line-height: 20px !important;
+}
+
+.fire-claim-form-container input[type="checkbox"] + label:before,
+.form-step input[type="checkbox"] + label:before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid #999 !important;
+  border-radius: 50% !important;
+  background: white !important;
+}
+
+.fire-claim-form-container input[type="checkbox"]:checked + label:before,
+.form-step input[type="checkbox"]:checked + label:before {
+  border-color: #d32f2f !important;
+}
+
+.fire-claim-form-container input[type="checkbox"]:checked + label:after,
+.form-step input[type="checkbox"]:checked + label:after {
+  content: '' !important;
+  position: absolute !important;
+  left: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background: #d32f2f !important;
+}
+
+/* Adjust positioning for checkbox items */
+.checkbox-item,
+.form-step div:has(> input[type="checkbox"]) {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 0 !important;
+  margin-bottom: 10px !important;
+}

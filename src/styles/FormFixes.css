@@ -123,4 +123,50 @@
     width: 100%;
     max-width: 100%;
   }
+}
+
+/* Enhanced styling for checkboxes to make them look like radio buttons */
+.form-step input[type="checkbox"] {
+  position: relative !important;
+  visibility: hidden !important;
+  margin: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.form-step input[type="checkbox"] + label::before {
+  content: "" !important;
+  display: inline-block !important;
+  position: relative !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 10px !important;
+  border: 2px solid #999 !important;
+  border-radius: 50% !important;
+  background-color: white !important;
+  vertical-align: middle !important;
+}
+
+.form-step input[type="checkbox"]:checked + label::before {
+  background-color: white !important;
+  border-color: #d32f2f !important;
+}
+
+.form-step input[type="checkbox"]:checked + label::after {
+  content: "" !important;
+  display: inline-block !important;
+  position: absolute !important;
+  left: 7px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background-color: #d32f2f !important;
+}
+
+/* Force proper styling for parent elements of checkboxes */
+.form-step div:has(> input[type="checkbox"]) {
+  position: relative !important;
+  padding-left: 10px !important;
 } 
