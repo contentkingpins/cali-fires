@@ -19,6 +19,9 @@
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
 }
 
 /* Fix description text positioning */
@@ -27,68 +30,85 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
+  color: #555;
 }
 
-/* Container for the checkbox group */
-.form-step div:has(> input[type="checkbox"]),
-.form-step > div:not(.form-buttons) {
+/* Single column layout for all form options */
+.form-step .checkbox-group,
+.form-step .radio-group,
+.form-step > div:not(.form-buttons):not(.form-question):not(.form-description) {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
-  margin: 0 auto;
   max-width: 450px;
+  margin: 15px auto;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  grid-template-columns: none !important;
 }
 
-/* Target each checkbox item */
+/* Style all radio buttons and checkboxes the same way */
 .form-step input[type="checkbox"],
 .form-step input[type="radio"] {
-  margin-right: 10px;
-  width: 18px;
-  height: 18px;
+  margin-right: 10px !important;
+  width: 18px !important;
+  height: 18px !important;
+  -webkit-appearance: radio !important;
+  -moz-appearance: radio !important;
+  appearance: radio !important;
+  border-radius: 50% !important;
 }
 
-/* Each label/item should be in a row */
+/* Ensure each option is in its own row */
+.checkbox-item,
+.radio-item,
 .form-step div:has(> input[type="checkbox"]),
 .form-step div:has(> input[type="radio"]) {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-height: 30px;
-  width: 100%;
-  text-align: left;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: 100% !important;
+  text-align: left !important;
+  padding: 6px 0 !important;
+  margin-bottom: 0 !important;
 }
 
-/* Fix for the specific damage selection page */
-.form-step:has(h3:contains("loss or damage")) {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-step:has(h3:contains("loss or damage")) h3,
-.form-step:has(h3:contains("loss or damage")) p {
-  text-align: center;
-  width: 100%;
-}
-
-.form-step:has(h3:contains("loss or damage")) > div:not(.form-buttons) {
-  width: 100%; 
-  max-width: 450px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Fix for the continue/back buttons */
+/* Fix button layout */
 .form-step .form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
   width: 100%;
   max-width: 450px;
+}
+
+/* Fix the specific damage type selection page */
+.form-step:has(h3:contains("loss or damage")) div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important; 
+  max-width: 450px !important;
+}
+
+/* Special override to eliminate two-column layout */
+.form-step table,
+.form-step tbody,
+.form-step tr,
+.form-step td {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Force single column layout everywhere */
+@media all {
+  .form-step * {
+    grid-template-columns: none !important;
+  }
+  
+  .form-step div:has(> input[type="checkbox"]),
+  .form-step div:has(> input[type="radio"]) {
+    margin-bottom: 8px !important;
+  }
 }
 
 /* Media queries for responsive behavior */
