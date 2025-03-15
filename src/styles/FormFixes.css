@@ -7,35 +7,79 @@
 .form-step {
   max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* Fix checkbox alignment */
-.form-step input[type="checkbox"] {
-  margin: 0;
+/* Fix question positioning */
+.form-step h3.form-question,
+.form-step .form-question {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Fix description text positioning */
+.form-step p.form-description,
+.form-step .form-description {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Container for the checkbox group */
+.form-step div:has(> input[type="checkbox"]),
+.form-step > div:not(.form-buttons) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 450px;
+}
+
+/* Target each checkbox item */
+.form-step input[type="checkbox"],
+.form-step input[type="radio"] {
+  margin-right: 10px;
   width: 18px;
   height: 18px;
 }
 
-/* Target the specific form with losses/damages checkboxes */
-.form-step h3.form-question + p + div,
-.form-step:has(h3:contains("loss or damage")) div {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 12px;
-  row-gap: 16px;
+/* Each label/item should be in a row */
+.form-step div:has(> input[type="checkbox"]),
+.form-step div:has(> input[type="radio"]) {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  padding: 5px 0;
-  margin: 15px 0;
+  min-height: 30px;
+  width: 100%;
+  text-align: left;
 }
 
-/* Very specific selectors to target the structure in the screenshot */
-.form-step div > input[type="checkbox"] {
-  margin-right: 12px;
-  grid-column: 1;
+/* Fix for the specific damage selection page */
+.form-step:has(h3:contains("loss or damage")) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.form-step div > input[type="checkbox"] + * {
-  grid-column: 2;
+.form-step:has(h3:contains("loss or damage")) h3,
+.form-step:has(h3:contains("loss or damage")) p {
+  text-align: center;
+  width: 100%;
+}
+
+.form-step:has(h3:contains("loss or damage")) > div:not(.form-buttons) {
+  width: 100%; 
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Fix for the continue/back buttons */
@@ -43,21 +87,20 @@
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
-}
-
-/* Override any conflicting styles */
-.form-step div:has(input[type="checkbox"]):not(.checkbox-item) {
-  display: flex;
-  align-items: center;
-  padding: 4px 0;
+  width: 100%;
+  max-width: 450px;
 }
 
 /* Media queries for responsive behavior */
 @media (max-width: 768px) {
-  .form-step h3.form-question + p + div,
-  .form-step:has(h3:contains("loss or damage")) div {
-    grid-template-columns: auto 1fr;
-    column-gap: 10px;
-    row-gap: 12px;
+  .form-step h3.form-question,
+  .form-step p.form-description {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .form-step > div:not(.form-buttons) {
+    width: 100%;
+    max-width: 100%;
   }
 } 
