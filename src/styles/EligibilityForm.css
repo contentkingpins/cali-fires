@@ -180,14 +180,30 @@
   gap: 12px;
 }
 
-.form-question + p + div input[type="checkbox"] {
-  margin-right: 10px;
+/* Remove all list markers and bullets */
+.form-step *::marker,
+.checkbox-group *::marker,
+.radio-group *::marker {
+  content: none !important;
+  display: none !important;
+}
+
+.form-step ul,
+.form-step ol,
+.form-step li,
+.checkbox-group li,
+.radio-group li {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* Target the specific structure shown in the screenshot */
 .form-step label[for] {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 0;
+  padding-left: 30px;
 }
 
 /* Fix for the row-based layout */
@@ -198,6 +214,7 @@
     align-items: center;
     gap: 10px;
     padding: 8px 15px 8px 0;
+    margin-left: 0;
   }
 }
 
@@ -257,10 +274,11 @@
 
 .form-step:has(h3:contains("loss or damage")) input[type="checkbox"] + label {
   position: relative;
-  padding-left: 28px;
+  padding-left: 30px;
   cursor: pointer;
   display: inline-block;
   line-height: 20px;
+  margin-left: 0;
 }
 
 .form-step:has(h3:contains("loss or damage")) input[type="checkbox"] + label:before {
@@ -271,7 +289,7 @@
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  border: 2px solid #999;
+  border: 1px solid #999;
   border-radius: 50%;
   background: white;
 }
@@ -283,7 +301,7 @@
 .form-step:has(h3:contains("loss or damage")) input[type="checkbox"]:checked + label:after {
   content: '';
   position: absolute;
-  left: 5px;
+  left: 4px;
   top: 50%;
   transform: translateY(-50%);
   width: 10px;

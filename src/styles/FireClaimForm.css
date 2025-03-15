@@ -237,15 +237,50 @@ input:focus, select:focus {
 .checkbox-item {
   min-height: 24px;
   padding: 4px 0;
+  position: relative;
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none !important;
+  list-style-type: none !important;
 }
 
 .checkbox-item input[type="checkbox"] {
-  min-width: 16px;
-  min-height: 16px;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
 }
 
 .checkbox-item label {
   margin-bottom: 0;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+  margin-left: 0;
+}
+
+/* Remove all markers and bullets */
+.fire-claim-form-container *::marker,
+.form-step *::marker,
+.checkbox-group *::marker,
+.radio-group *::marker {
+  content: none !important;
+  display: none !important;
+}
+
+.fire-claim-form-container ul,
+.fire-claim-form-container ol,
+.fire-claim-form-container li,
+.form-step ul,
+.form-step ol,
+.form-step li,
+.checkbox-group li,
+.radio-group li {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* Additional styling for checkboxes in form layout */
@@ -345,10 +380,11 @@ input:focus, select:focus {
 .fire-claim-form-container input[type="checkbox"] + label,
 .form-step input[type="checkbox"] + label {
   position: relative !important;
-  padding-left: 28px !important;
+  padding-left: 30px !important;
   cursor: pointer !important;
   display: inline-block !important;
   line-height: 20px !important;
+  margin-left: 0 !important;
 }
 
 .fire-claim-form-container input[type="checkbox"] + label:before,
@@ -360,7 +396,7 @@ input:focus, select:focus {
   transform: translateY(-50%) !important;
   width: 18px !important;
   height: 18px !important;
-  border: 2px solid #999 !important;
+  border: 1px solid #999 !important;
   border-radius: 50% !important;
   background: white !important;
 }
@@ -374,7 +410,7 @@ input:focus, select:focus {
 .form-step input[type="checkbox"]:checked + label:after {
   content: '' !important;
   position: absolute !important;
-  left: 5px !important;
+  left: 4px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   width: 10px !important;
@@ -391,4 +427,5 @@ input:focus, select:focus {
   align-items: center !important;
   padding-left: 0 !important;
   margin-bottom: 10px !important;
+  margin-left: 0 !important;
 }
