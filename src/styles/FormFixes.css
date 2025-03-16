@@ -389,4 +389,49 @@
 .form-step:has(h3:contains("Contact Information")) .form-group *::after {
   display: none !important;
   content: none !important;
+}
+
+/* DIRECT FIX FOR RADIO CIRCLES ABOVE INPUT FIELDS */
+.form-step:has(.form-question:contains("Contact Information")) > div > input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) > div > input[type="radio"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.form-step:has(.form-question:contains("Contact Information")) form.contact-info-form + input[type="radio"],
+.form-step:has(.form-question:contains("Contact Information")) form.contact-info-form ~ input[type="radio"],
+.form-step:has(.form-question:contains("Contact Information")) form.contact-info-form ~ *,
+.form-step:has(h3:contains("Contact Information")) form.contact-info-form + input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) form.contact-info-form ~ input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) form.contact-info-form ~ * {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Direct fix for circles by position */
+.form-step [type="radio"] + label[for^="firstName"],
+.form-step [type="radio"] + label[for^="lastName"],
+.form-step [type="radio"] + label[for^="email"],
+.form-step [type="radio"] + label[for^="phone"],
+.form-step [type="radio"] + label[for^="zipCode"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Hide all radio buttons and circles within the contact information form step */
+.form-step:has(h3:contains("Contact Information")) [type="radio"],
+.form-step:has(h3:contains("Contact Information")) [type="radio"] + label,
+.form-step:has(h3:contains("Contact Information")) [type="radio"] ~ label,
+.form-step:has(.form-question:contains("Contact Information")) [type="radio"],
+.form-step:has(.form-question:contains("Contact Information")) [type="radio"] + label,
+.form-step:has(.form-question:contains("Contact Information")) [type="radio"] ~ label {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Remove all siblings of form-group in contact form */
+.form-step:has(h3:contains("Contact Information")) .form-group ~ *:not(.form-buttons):not(.privacy-notice):not(.submit-error-message),
+.form-step:has(.form-question:contains("Contact Information")) .form-group ~ *:not(.form-buttons):not(.privacy-notice):not(.submit-error-message) {
+  display: none !important;
+  visibility: hidden !important;
 } 
