@@ -295,7 +295,7 @@
 }
 
 .form-step:has(h3:contains("loss or damage")) input[type="checkbox"]:checked + label:before {
-  border-color: #d32f2f;
+  border-color: #999;
 }
 
 .form-step:has(h3:contains("loss or damage")) input[type="checkbox"]:checked + label:after {
