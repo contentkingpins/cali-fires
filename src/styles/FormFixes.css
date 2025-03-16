@@ -128,6 +128,13 @@
   background-color: #fff !important;
 }
 
+/* Create the circle fill when selected - ensure border remains dark */
+.form-step input[type="radio"]:checked + label::before,
+.form-step input[type="checkbox"]:checked + label::before,
+.form-step input:checked + label[for]::before {
+  border-color: #999 !important;
+}
+
 /* Create the circle fill when selected */
 .form-step input[type="radio"]:checked + label::after,
 .form-step input[type="checkbox"]:checked + label::after,

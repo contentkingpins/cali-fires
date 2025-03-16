@@ -403,7 +403,7 @@ input:focus, select:focus {
 
 .fire-claim-form-container input[type="checkbox"]:checked + label:before,
 .form-step input[type="checkbox"]:checked + label:before {
-  border-color: #d32f2f !important;
+  border-color: #999 !important;
 }
 
 .fire-claim-form-container input[type="checkbox"]:checked + label:after,
