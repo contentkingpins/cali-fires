@@ -52,94 +52,90 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
     }
   };
   
+  // Custom styled inputs without radio buttons
+  const renderInputField = (id, label, type, value, placeholder = '') => (
+    <div className="input-field-container" style={{marginBottom: '20px'}}>
+      <label htmlFor={id} style={{display: 'block', marginBottom: '8px'}}>{label}</label>
+      <input
+        type={type}
+        id={id}
+        value={value}
+        onChange={(e) => handleInputChange(id, e.target.value)}
+        placeholder={placeholder}
+        style={{
+          width: '100%',
+          padding: '12px',
+          border: '1px solid #ddd',
+          borderRadius: '4px',
+          fontSize: '1rem'
+        }}
+        className={errors[id] ? 'error' : ''}
+      />
+      {errors[id] && <div className="error-message" style={{color: 'red', marginTop: '5px'}}>{errors[id]}</div>}
+    </div>
+  );
+  
   return (
-    <div>
+    <div className="contact-form-container">
       <h3 className="form-question">Contact Information</h3>
       <p className="form-description">Please provide your contact details so we can get in touch with you about your claim.</p>
       
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input 
-            type="text" 
-            id="firstName" 
-            value={formData.firstName} 
-            onChange={(e) => handleInputChange('firstName', e.target.value)} 
-            className={errors.firstName ? 'error' : ''}
-          />
-          {errors.firstName && <div className="error-message">{errors.firstName}</div>}
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input 
-            type="text" 
-            id="lastName" 
-            value={formData.lastName} 
-            onChange={(e) => handleInputChange('lastName', e.target.value)} 
-            className={errors.lastName ? 'error' : ''}
-          />
-          {errors.lastName && <div className="error-message">{errors.lastName}</div>}
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input 
-            type="email" 
-            id="email" 
-            value={formData.email} 
-            onChange={(e) => handleInputChange('email', e.target.value)} 
-            className={errors.email ? 'error' : ''}
-          />
-          {errors.email && <div className="error-message">{errors.email}</div>}
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="phone">Phone Number</label>
-          <input 
-            type="tel" 
-            id="phone" 
-            value={formData.phone} 
-            onChange={(e) => handleInputChange('phone', e.target.value)} 
-            placeholder="(123) 456-7890"
-            className={errors.phone ? 'error' : ''}
-          />
-          {errors.phone && <div className="error-message">{errors.phone}</div>}
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="zipCode">ZIP Code</label>
-          <input 
-            type="text" 
-            id="zipCode" 
-            value={formData.zipCode} 
-            onChange={(e) => handleInputChange('zipCode', e.target.value)} 
-            className={errors.zipCode ? 'error' : ''}
-          />
-          {errors.zipCode && <div className="error-message">{errors.zipCode}</div>}
-        </div>
+      <form onSubmit={onSubmit} className="contact-info-form" style={{width: '100%', maxWidth: '450px'}}>
+        {renderInputField('firstName', 'First Name', 'text', formData.firstName)}
+        {renderInputField('lastName', 'Last Name', 'text', formData.lastName)}
+        {renderInputField('email', 'Email Address', 'email', formData.email)}
+        {renderInputField('phone', 'Phone Number', 'tel', formData.phone, '(123) 456-7890')}
+        {renderInputField('zipCode', 'ZIP Code', 'text', formData.zipCode)}
         
         {submitError && (
-          <div className="submit-error-message">
+          <div className="submit-error-message" style={{
+            backgroundColor: '#ffebee', 
+            color: '#c62828', 
+            padding: '10px 15px', 
+            borderRadius: '4px', 
+            marginBottom: '20px',
+            marginTop: '10px'
+          }}>
             <p>{submitError}</p>
             <p>Please try again or call us directly at (800) 555-1234 for assistance.</p>
           </div>
         )}
         
-        <div className="privacy-notice">
+        <div className="privacy-notice" style={{marginBottom: '20px', fontSize: '0.9rem', color: '#666'}}>
           <p>
-            By submitting this form, you agree to our <a href="/privacy" target="_blank">Privacy Policy</a> and 
+            By submitting this form, you agree to our <a href="/privacy" target="_blank">Privacy Policy</a> and{' '}
             <a href="/terms" target="_blank">Terms of Service</a>. We will use your information to evaluate your 
             potential claim and contact you about legal representation.
           </p>
         </div>
         
-        <div className="form-buttons">
-          <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
+        <div className="form-buttons" style={{display: 'flex', justifyContent: 'space-between'}}>
+          <button 
+            type="button" 
+            className="btn btn-secondary" 
+            onClick={prevStep}
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#f5f5f5',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            Back
+          </button>
           <button 
             type="submit" 
             className="btn btn-primary"
             disabled={isSubmitting}
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#d32f2f',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: isSubmitting ? 'not-allowed' : 'pointer'
+            }}
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
