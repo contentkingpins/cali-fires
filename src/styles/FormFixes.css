@@ -290,4 +290,103 @@
   opacity: 1 !important;
   visibility: visible !important;
   position: static !important;
+}
+
+/* AGGRESSIVE CONTACT FORM FIX - REMOVE ALL CIRCLES */
+.form-step:has(.form-question:contains("Contact Information")),
+.form-step:has(h3:contains("Contact Information")) {
+  position: relative;
+}
+
+/* Target the circles that appear before the input boxes */
+.form-step:has(.form-question:contains("Contact Information")) > div > input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) > div > input[type="radio"],
+.form-step:has(.form-question:contains("Contact Information")) form > div > input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) form > div > input[type="radio"],
+.form-step:has(.form-question:contains("Contact Information")) [type="radio"],
+.form-step:has(h3:contains("Contact Information")) [type="radio"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  z-index: -999 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide the radio button pseudo-elements */
+.form-step:has(.form-question:contains("Contact Information")) input[type="radio"] + label::before, 
+.form-step:has(.form-question:contains("Contact Information")) input[type="radio"] + label::after,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::before,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::after,
+.form-step:has(.form-question:contains("Contact Information")) label::before,
+.form-step:has(.form-question:contains("Contact Information")) label::after,
+.form-step:has(h3:contains("Contact Information")) label::before,
+.form-step:has(h3:contains("Contact Information")) label::after {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Reset label styles */
+.form-step:has(.form-question:contains("Contact Information")) label,
+.form-step:has(h3:contains("Contact Information")) label {
+  display: block !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  margin-bottom: 8px !important;
+  font-weight: 500 !important;
+  position: static !important;
+}
+
+/* Ensure input fields are displayed properly */
+.form-step:has(.form-question:contains("Contact Information")) input[type="text"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="email"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="tel"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="number"],
+.form-step:has(.form-question:contains("Contact Information")) input:not([type="radio"]),
+.form-step:has(h3:contains("Contact Information")) input[type="text"],
+.form-step:has(h3:contains("Contact Information")) input[type="email"],
+.form-step:has(h3:contains("Contact Information")) input[type="tel"],
+.form-step:has(h3:contains("Contact Information")) input[type="number"],
+.form-step:has(h3:contains("Contact Information")) input:not([type="radio"]) {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
+  margin: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+/* Target the specific element structure in the form */
+.form-step form .form-group,
+.form-step:has(h3:contains("Contact Information")) form .form-group {
+  margin-bottom: 20px !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 450px !important;
+  position: relative !important;
+}
+
+/* Clear out any nested circles */
+.form-group * {
+  border-radius: 0 !important;
+}
+
+/* Override any global styles that might affect the contact form fields */
+.form-step:has(.form-question:contains("Contact Information")) .form-group *::before,
+.form-step:has(.form-question:contains("Contact Information")) .form-group *::after,
+.form-step:has(h3:contains("Contact Information")) .form-group *::before,
+.form-step:has(h3:contains("Contact Information")) .form-group *::after {
+  display: none !important;
+  content: none !important;
 } 
