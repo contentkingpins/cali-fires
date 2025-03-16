@@ -42,6 +42,26 @@ export const submitToDynamoDB = async (formData) => {
       ...(formData.zipCode && { zip_code: formData.zipCode })
     };
 
+    // For development/demo mode - skip actual API call and simulate success
+    // This allows the form to work without a backend in development
+    if (process.env.NODE_ENV !== 'production' || window.location.hostname === 'localhost') {
+      console.log('Development mode detected - skipping actual API submission');
+      console.log('Would have submitted the following data:', payload);
+      
+      // Simulate a delay to make it feel realistic
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Return success
+      return { 
+        success: true, 
+        lead_id: lead_id,
+        message: 'Development mode - Form submitted successfully (simulated)'
+      };
+    }
+
+    // In production mode - make the actual API call
+    console.log('Submitting form data to API:', payload);
+    
     // Make API call to your backend service that will interact with DynamoDB
     const response = await fetch('/api/submit-lead', {
       method: 'POST',
@@ -52,7 +72,9 @@ export const submitToDynamoDB = async (formData) => {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to submit form data');
+      const errorData = await response.text();
+      console.error('API Error Response:', errorData);
+      throw new Error(`Failed to submit form data: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
