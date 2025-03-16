@@ -188,4 +188,106 @@
     width: 100%;
     max-width: 100%;
   }
+}
+
+/* Special rule for contact form to hide the circles before input fields */
+.form-step:has(h3:contains("Contact Information")) input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::before,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::after,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label {
+  display: none !important;
+}
+
+.form-step:has(h3:contains("Contact Information")) .form-group {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.form-step:has(h3:contains("Contact Information")) label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+  padding-left: 0 !important;
+}
+
+.form-step:has(h3:contains("Contact Information")) input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-step:has(h3:contains("Contact Information")) input:focus {
+  outline: none;
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.2);
+}
+
+/* Contact form field specific fixes */
+.form-step:has(h3:contains("Contact Information")) input,
+.form-step:has(.form-question:contains("Contact Information")) input {
+  position: static !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+/* Contact form field wrapper */
+.form-step:has(h3:contains("Contact Information")) .form-group,
+.form-step:has(.form-question:contains("Contact Information")) .form-group {
+  margin-bottom: 20px !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 450px !important;
+}
+
+/* Remove all radio button styling for all contact form fields */
+.form-step:has(h3:contains("Contact Information")) input ~ label::before,
+.form-step:has(h3:contains("Contact Information")) input ~ label::after,
+.form-step:has(.form-question:contains("Contact Information")) input ~ label::before,
+.form-step:has(.form-question:contains("Contact Information")) input ~ label::after,
+.form-step:has(.form-question:contains("Contact Information")) label::before,
+.form-step:has(.form-question:contains("Contact Information")) label::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Fix label positioning for contact form */
+.form-step:has(h3:contains("Contact Information")) label,
+.form-step:has(.form-question:contains("Contact Information")) label {
+  display: block !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  position: static !important;
+  margin-bottom: 8px !important;
+  font-weight: 500 !important;
+}
+
+/* Hide any radio items in contact form */
+.form-step:has(h3:contains("Contact Information")) .radio-item,
+.form-step:has(.form-question:contains("Contact Information")) .radio-item {
+  display: none !important;
+}
+
+/* Force all input fields in contact form to be visible and properly styled */
+.form-step:has(h3:contains("Contact Information")) input[type="text"],
+.form-step:has(h3:contains("Contact Information")) input[type="email"],
+.form-step:has(h3:contains("Contact Information")) input[type="tel"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="text"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="email"],
+.form-step:has(.form-question:contains("Contact Information")) input[type="tel"] {
+  width: 100% !important;
+  height: auto !important;
+  padding: 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
 } 

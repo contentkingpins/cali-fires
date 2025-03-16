@@ -429,3 +429,36 @@ input:focus, select:focus {
   margin-bottom: 10px !important;
   margin-left: 0 !important;
 }
+
+/* Hide radio circles on contact form */
+.form-step:has(h3:contains("Contact Information")) .radio-item,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"],
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::before,
+.form-step:has(h3:contains("Contact Information")) input[type="radio"] + label::after {
+  display: none !important;
+}
+
+.form-step:has(form:has(div.form-group)) input[type="radio"],
+.form-step:has(form:has(div.form-group)) input[type="radio"] + label::before,
+.form-step:has(form:has(div.form-group)) input[type="radio"] + label::after {
+  display: none !important;
+}
+
+.form-step:has(h3:contains("Contact Information")) .form-group label {
+  padding-left: 0 !important;
+}
+
+.form-step:has(h3:contains("Contact Information")) .form-group label::before,
+.form-step:has(h3:contains("Contact Information")) .form-group label::after {
+  display: none !important;
+}
+
+/* Fix for all input field containers on contact form */
+.form-step:has(h3:contains("Contact Information")) .form-group input {
+  display: block !important;
+  width: 100% !important;
+  padding: 12px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+}
