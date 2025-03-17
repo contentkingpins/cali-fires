@@ -10,7 +10,7 @@ const ResultsDisplay = () => {
     return null;
   }
   
-  const { isEligible, formData, lead_id } = eligibilityResult;
+  const { isEligible, formData } = eligibilityResult;
   
   return (
     <section className="results-section" id="results">
@@ -30,12 +30,6 @@ const ResultsDisplay = () => {
               Based on your responses, you may be eligible to pursue a claim for the {formData.wildfire} Fire. 
               Our team of experienced wildfire attorneys is ready to help you get the compensation you deserve.
             </p>
-            {lead_id && (
-              <div className="reference-number">
-                <p>Your reference number: <strong>{lead_id}</strong></p>
-                <p className="reference-note">Please save this number for your records.</p>
-              </div>
-            )}
             <div className="results-next-steps">
               <h3>What Happens Next?</h3>
               <ol>
@@ -61,12 +55,6 @@ const ResultsDisplay = () => {
               Based on your responses, we need additional information to determine if we can assist with your claim. 
               Every situation is unique, and our team would like to learn more about your specific circumstances.
             </p>
-            {lead_id && (
-              <div className="reference-number">
-                <p>Your reference number: <strong>{lead_id}</strong></p>
-                <p className="reference-note">Please save this number for your records.</p>
-              </div>
-            )}
             <div className="results-resources">
               <h3>Additional Resources</h3>
               <ul>
