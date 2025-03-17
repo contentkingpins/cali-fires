@@ -55,6 +55,38 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
     `;
     document.head.appendChild(style);
     
+    // NEW: Insert TrustedForm script
+    const insertTrustedFormScript = () => {
+      // Create the TrustedForm script
+      const tf = document.createElement('script');
+      tf.type = 'text/javascript';
+      tf.async = true;
+      tf.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 
+              'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&l=' + 
+              new Date().getTime() + Math.random();
+      
+      // Insert script into page
+      const s = document.getElementsByTagName('script')[0];
+      if (s && s.parentNode) {
+        s.parentNode.insertBefore(tf, s);
+      } else {
+        // Fallback if no script tags exist yet
+        document.head.appendChild(tf);
+      }
+      
+      // Also add the noscript version for fallback
+      const noscript = document.createElement('noscript');
+      const img = document.createElement('img');
+      img.src = 'https://api.trustedform.com/ns.gif';
+      noscript.appendChild(img);
+      document.body.appendChild(noscript);
+      
+      console.log('TrustedForm script inserted');
+    };
+    
+    // Insert the TrustedForm script
+    insertTrustedFormScript();
+    
     // NEW: Super aggressive radio button removal
     const nukeRadioButtons = () => {
       console.log("Removing all radio buttons from contact form...");
@@ -335,6 +367,25 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
         }
       `}} />
       
+      {/* TrustedForm script tag */}
+      <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
+        (function() {
+          var tf = document.createElement('script');
+          tf.type = 'text/javascript';
+          tf.async = true;
+          tf.src = ('https:' == document.location.protocol ? 'https://' : 'http://') +
+            'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&l=' +
+            new Date().getTime() + Math.random();
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(tf, s);
+        })();
+      `}} />
+      
+      {/* TrustedForm noscript tag for fallback */}
+      <noscript>
+        <img src="https://api.trustedform.com/ns.gif" />
+      </noscript>
+      
       <h3 style={{ textAlign: 'center', marginBottom: '15px' }}>Contact Information</h3>
       <p style={{ textAlign: 'center', marginBottom: '20px' }}>
         Please provide your contact details so we can get in touch with you about your claim.
@@ -342,6 +393,9 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
       
       <div style={{ maxWidth: '450px', margin: '0 auto', textAlign: 'left' }}>
         <form id="contactForm" onSubmit={onSubmit}>
+          {/* Hidden TrustedForm field - will be populated by the script */}
+          <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl" />
+          
           {/* First Name Field */}
           <div style={{ marginBottom: '20px' }}>
             <label 
