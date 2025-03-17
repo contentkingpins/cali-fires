@@ -67,14 +67,6 @@ const ResultsDisplay = () => {
                 <p className="reference-note">Please save this number for your records.</p>
               </div>
             )}
-            <div className="results-cta">
-              <a href="tel:8005551234" className="btn btn-secondary btn-lg">
-                <i className="fas fa-phone-alt"></i> Speak with a Specialist
-              </a>
-              <p className="results-disclaimer">
-                We may still be able to help. Call for a free consultation.
-              </p>
-            </div>
             <div className="results-resources">
               <h3>Additional Resources</h3>
               <ul>
