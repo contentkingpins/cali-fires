@@ -523,9 +523,9 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
               onClick={prevStep}
               style={{
                 padding: '12px 24px',
-                backgroundColor: '#f5f5f5',
-                color: '#333',
-                border: '1px solid #ddd',
+                backgroundColor: '#d32f2f',
+                color: 'white',
+                border: 'none',
                 borderRadius: '4px',
                 fontSize: '1rem',
                 cursor: 'pointer'
