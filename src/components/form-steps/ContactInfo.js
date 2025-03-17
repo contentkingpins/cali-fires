@@ -55,14 +55,14 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
     `;
     document.head.appendChild(style);
     
-    // NEW: Insert TrustedForm script
+    // NEW: Insert TrustedForm script with identifier and consent tags
     const insertTrustedFormScript = () => {
       // Create the TrustedForm script
       const tf = document.createElement('script');
       tf.type = 'text/javascript';
       tf.async = true;
       tf.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 
-              'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&l=' + 
+              'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&identifier=califireclaimcenter&use_tagged_consent=true&l=' + 
               new Date().getTime() + Math.random();
       
       // Insert script into page
@@ -81,7 +81,7 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
       noscript.appendChild(img);
       document.body.appendChild(noscript);
       
-      console.log('TrustedForm script inserted');
+      console.log('TrustedForm script inserted with identifier and consent tags');
     };
     
     // Insert the TrustedForm script
@@ -367,14 +367,14 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
         }
       `}} />
       
-      {/* TrustedForm script tag */}
+      {/* TrustedForm script tag with identifier and consent tags */}
       <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
         (function() {
           var tf = document.createElement('script');
           tf.type = 'text/javascript';
           tf.async = true;
           tf.src = ('https:' == document.location.protocol ? 'https://' : 'http://') +
-            'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&l=' +
+            'api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&identifier=califireclaimcenter&use_tagged_consent=true&l=' +
             new Date().getTime() + Math.random();
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(tf, s);
