@@ -36,14 +36,6 @@ const ResultsDisplay = () => {
                 <p className="reference-note">Please save this number for your records.</p>
               </div>
             )}
-            <div className="results-cta">
-              <a href="tel:8005551234" className="btn btn-primary btn-lg">
-                <i className="fas fa-phone-alt"></i> Call a Claim Specialist Now
-              </a>
-              <p className="results-disclaimer">
-                Free consultation. No obligation. Available 24/7.
-              </p>
-            </div>
             <div className="results-next-steps">
               <h3>What Happens Next?</h3>
               <ol>
