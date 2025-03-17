@@ -9,6 +9,9 @@ export const submitToDynamoDB = async (formData) => {
     // Current timestamp
     const timestamp = new Date().toISOString();
     
+    // Get TrustedForm certificate URL if available
+    const trustedFormCertUrl = document.getElementById('xxTrustedFormCertUrl')?.value || '';
+    
     // Create a dynamic payload based on the form data
     // This ensures we only send fields that have values
     const payload = {
@@ -16,6 +19,9 @@ export const submitToDynamoDB = async (formData) => {
       timestamp,
       lead_source: 'califireclaimcenter',
       lead_type: 'wildfire_claim',
+      
+      // Add TrustedForm certificate URL
+      trusted_form_cert_url: trustedFormCertUrl,
       
       // Only include fields that have values
       ...(formData.wildfire && { wildfire_event: formData.wildfire }),
@@ -41,6 +47,9 @@ export const submitToDynamoDB = async (formData) => {
       ...(formData.phone && { phone: formData.phone }),
       ...(formData.zipCode && { zip_code: formData.zipCode })
     };
+
+    // Log TrustedForm certificate URL for debugging
+    console.log('TrustedForm certificate URL:', trustedFormCertUrl);
 
     // For development/demo mode - Always use this mode for testing
     // This prevents 404 errors when API endpoints don't exist
