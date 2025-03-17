@@ -434,4 +434,119 @@
 .form-step:has(.form-question:contains("Contact Information")) .form-group ~ *:not(.form-buttons):not(.privacy-notice):not(.submit-error-message) {
   display: none !important;
   visibility: hidden !important;
+}
+
+/* ================================================================
+   FORM FIXES - Aggressively hide any radio buttons in contact form
+   ================================================================ */
+
+/* Target radio buttons across the entire form */
+.form-step input[type="radio"],
+.wildfire-selection input[type="radio"],
+.damage-selection input[type="radio"] {
+  transform: scale(0) !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure damage selection form shows circles for checkboxes */
+.damage-selection input[type="checkbox"] + label::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #999 !important;
+  border-radius: 50% !important; /* Make it circular */
+  margin-right: 10px !important;
+  position: relative !important;
+  top: 5px !important;
+  background-color: white !important;
+}
+
+/* Style for checked checkboxes */
+.damage-selection input[type="checkbox"]:checked + label::before {
+  border-color: #d32f2f !important;
+  background-color: white !important;
+}
+
+/* Add the center dot for checked checkboxes */
+.damage-selection input[type="checkbox"]:checked + label::after {
+  content: "" !important;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #d32f2f !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  left: 7px !important;
+  top: 12px !important;
+}
+
+/* =================================================================
+   CONTACT FORM FIX - High specificity selectors to target and remove
+   all radio buttons in the Contact Information form specifically
+   ================================================================= */
+
+/* Super aggressive direct targeting of Contact Info form elements */
+.form-step *:has(h3:contains("Contact Information")) input[type="radio"],
+.form-step *:has(h3:contains("Contact Information")) input[type="radio"] + *,
+.form-step *:has(h3:contains("Contact Information")) input[type="radio"] ~ *:not(input[type="text"], input[type="email"], input[type="tel"]),
+*:has(h3:contains("Contact Information")) input[type="radio"],
+*:has(h3:contains("Contact Information")) .radio,
+*:has(h3:contains("Contact Information")) [class*="radio"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
+}
+
+/* Another approach - target all direct children of contact info form that are not inputs or labels */
+#contactForm > *:not(input, label, button, div, p),
+.contact-form-wrapper > *:not(h3, p, form, div, style) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Target label styling in contact form */
+#contactForm label,
+.contact-form-wrapper label {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  position: static !important;
+}
+
+/* Override all pseudo elements in the contact form */
+#contactForm label::before,
+#contactForm label::after,
+.contact-form-wrapper label::before,
+.contact-form-wrapper label::after {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Contact form input styling */
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm input[type="tel"],
+.contact-form-wrapper input[type="text"],
+.contact-form-wrapper input[type="email"], 
+.contact-form-wrapper input[type="tel"] {
+  display: block !important;
+  width: 100% !important;
+  padding: 12px !important;
+  margin-bottom: 4px !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static !important;
 } 
