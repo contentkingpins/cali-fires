@@ -136,15 +136,19 @@
 }
 
 .image-caption {
-  padding: 15px;
-  background-color: rgba(0, 0, 0, 0.7);
+  padding: 18px;
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-style: italic;
+  line-height: 1.5;
+  z-index: 2;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* CTA Box Styles */
@@ -552,5 +556,17 @@
     width: 100%;
     max-width: 300px;
     margin: 10px auto;
+  }
+  
+  .image-caption {
+    position: relative;
+    background-color: #2c5364;
+    margin-top: 0;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .mission-image {
+    margin-bottom: 0;
   }
 } 
