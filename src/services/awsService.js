@@ -1,78 +1,132 @@
 import { v4 as uuidv4 } from 'uuid';
 
-// Function to submit form data to DynamoDB
+// Function to submit form data to the specified API endpoint
 export const submitToDynamoDB = async (formData) => {
   try {
     // Generate a unique lead ID
     const lead_id = uuidv4();
     
-    // Current timestamp
-    const timestamp = new Date().toISOString();
+    // Format the date as required (YYYY-MM-DD HH:MM:SS)
+    const formatDate = () => {
+      const now = new Date();
+      const pad2 = num => num.toString().padStart(2, '0');
+      return `${now.getFullYear()}-${pad2(now.getMonth()+1)}-${pad2(now.getDate())} ` +
+             `${pad2(now.getHours())}:${pad2(now.getMinutes())}:${pad2(now.getSeconds())}`;
+    };
     
-    // Get TrustedForm certificate URL if available
+    // Get client IP address (in development, this will be a fallback value)
+    const getIpAddress = async () => {
+      try {
+        // Try to get the IP from an external service
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+      } catch (error) {
+        console.log('Could not get IP address, using fallback value');
+        return '127.0.0.1';
+      }
+    };
+    
+    // Get IP address
+    const ipAddress = await getIpAddress();
+    
+    // Get TrustedForm certificate URL
     const trustedFormCertUrl = document.getElementById('xxTrustedFormCertUrl')?.value || '';
     
-    // Create a dynamic payload based on the form data
-    // This ensures we only send fields that have values
+    // Get user agent
+    const userAgent = navigator.userAgent;
+    
+    // Map wildfire selection to required format
+    const mapWildfire = (wildfire) => {
+      switch (wildfire) {
+        case 'Palisades Fire': return 'Palisades';
+        case 'Eaton Fire': return 'Eaton';
+        case 'Hurst Fire': return 'Hurst';
+        case 'Lidia Fire': return 'Lidia';
+        case 'Sunset Fire': return 'Sunset';
+        case 'Kenneth Fire': return 'Kenneth';
+        default: return wildfire;
+      }
+    };
+    
+    // Map loss types to the required damage format
+    const mapDamage = (lossTypes) => {
+      if (lossTypes.includes('property')) {
+        return 'Residential Property (Home was damaged or destroyed)';
+      } else if (lossTypes.includes('business')) {
+        return 'Commercial Property (Business property was damaged or destroyed)';
+      } else if (lossTypes.includes('income')) {
+        return 'Loss of Income over 50k (Unable to work due to the fire)';
+      } else if (lossTypes.includes('injury')) {
+        return 'Personal Injury (Required Hospitalization or Medical Treatment Within 10 Days) Death of a Family Member';
+      } else if (lossTypes.includes('emotional')) {
+        return 'First responder at the Eaton Fire (sought treatment within 10 days for PTSD or mental health injuries)';
+      } else {
+        return 'Personal Property over 50k (Cars, furniture, valuables, etc.)';
+      }
+    };
+    
+    // Map insurance to yes/no
+    const mapYesNo = (value) => value ? 'Yes' : 'No';
+    
+    // Map loss amount to required format
+    const mapEstimate = (lossAmount) => {
+      if (lossAmount === 'over50k') {
+        return '50k to $499k';
+      } else if (lossAmount === 'over500k') {
+        return '$500k or more';
+      } else {
+        return '50k to $499k'; // Default to the qualified value
+      }
+    };
+    
+    // Create the payload according to the specified format
     const payload = {
-      lead_id,
-      timestamp,
-      lead_source: 'califireclaimcenter',
-      lead_type: 'wildfire_claim',
-      
-      // Add TrustedForm certificate URL
-      trusted_form_cert_url: trustedFormCertUrl,
-      
-      // Only include fields that have values
-      ...(formData.wildfire && { wildfire_event: formData.wildfire }),
-      ...(formData.lossTypes && formData.lossTypes.length > 0 && { 
-        loss_types: formData.lossTypes,
-        has_property_loss: formData.lossTypes.includes('property'),
-        has_injury: formData.lossTypes.includes('injury'),
-        has_business_loss: formData.lossTypes.includes('business'),
-        has_income_loss: formData.lossTypes.includes('income'),
-        has_emotional_distress: formData.lossTypes.includes('emotional')
-      }),
-      ...(formData.hasInsurance !== null && { has_insurance: formData.hasInsurance }),
-      ...(formData.soughtMedicalAttention !== null && { sought_medical_attention: formData.soughtMedicalAttention }),
-      ...(formData.medicalTimeframe && { medical_timeframe: formData.medicalTimeframe }),
-      ...(formData.lossAmount && { loss_amount: formData.lossAmount }),
-      ...(formData.hasLegalRepresentation !== null && { has_legal_representation: formData.hasLegalRepresentation }),
-      ...(formData.utilityProvider && { utility_provider: formData.utilityProvider }),
-      
-      // Contact information
-      ...(formData.firstName && { first_name: formData.firstName }),
-      ...(formData.lastName && { last_name: formData.lastName }),
-      ...(formData.email && { email: formData.email }),
-      ...(formData.phone && { phone: formData.phone }),
-      ...(formData.zipCode && { zip_code: formData.zipCode })
+      date: formatDate(),
+      ip: ipAddress,
+      uniqueid: lead_id,
+      s1: 'califireclaimcenter', // Tracking source
+      user_agent: userAgent,
+      xxTrustedFormCertUrl: trustedFormCertUrl,
+      fname: formData.firstName,
+      lname: formData.lastName,
+      phone: formData.phone.replace(/\D/g, ''), // Strip non-numeric characters
+      email: formData.email,
+      fire: mapWildfire(formData.wildfire),
+      damage: mapDamage(formData.lossTypes),
+      own: "Yes", // Defaulting to Yes as it's not explicitly collected in our form
+      insurance: mapYesNo(formData.hasInsurance),
+      estimate: mapEstimate(formData.lossAmount),
+      felony: "No", // Defaulting to No as it's not explicitly collected in our form
+      attorney: mapYesNo(formData.hasLegalRepresentation)
     };
 
-    // Log TrustedForm certificate URL for debugging
+    // Log data being sent
+    console.log('Preparing to submit data to endpoint:', payload);
     console.log('TrustedForm certificate URL:', trustedFormCertUrl);
 
-    // For development/demo mode - Always use this mode for testing
-    // This prevents 404 errors when API endpoints don't exist
-    if (true || process.env.NODE_ENV !== 'production' || window.location.hostname === 'localhost') {
-      console.log('Development mode detected - skipping actual API submission');
-      console.log('Would have submitted the following data:', payload);
+    // For testing during development, uncomment this section
+    const isDevelopment = false; // Change to false when ready to go live
+    
+    if (isDevelopment) {
+      console.log('Development mode - skipping actual API submission');
       
-      // Simulate a delay to make it feel realistic
+      // Simulate a delay
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      // Return success
+      // Return success response
       return { 
         success: true, 
         lead_id: lead_id,
-        message: 'Development mode - Form submitted successfully (simulated)'
+        message: 'Test mode - Form submitted successfully (simulated)'
       };
     }
 
-    // This code will never run during testing but is kept for production use
-    console.log('Submitting form data to API:', payload);
+    // Make the actual API call to the specified endpoint
+    console.log('Submitting lead data to API endpoint');
+    const apiUrl = 'https://hook.us1.make.celonis.com/uhbp12uhjkrxowrncu8o1hm17q3if59f';
     
-    // Make API call to your backend service that will interact with DynamoDB
-    const response = await fetch('/api/submit-lead', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,14 +134,44 @@ export const submitToDynamoDB = async (formData) => {
       body: JSON.stringify(payload),
     });
 
+    // Get the response text
+    const responseText = await response.text();
+    console.log('API Response:', responseText);
+
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error('API Error Response:', errorData);
+      console.error('API Error Response:', responseText);
       throw new Error(`Failed to submit form data: ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
-    return { success: true, lead_id: data.lead_id };
+    // Check for specific response messages
+    if (responseText.includes('Lead Accepted')) {
+      console.log('Lead was accepted successfully!');
+      return { 
+        success: true, 
+        lead_id: lead_id,
+        message: 'Lead Accepted'
+      };
+    } else if (responseText.includes('Accepted')) {
+      console.log('Data was received but lead status is pending');
+      return { 
+        success: true, 
+        lead_id: lead_id,
+        message: 'Data Accepted - In Testing Mode'
+      };
+    } else if (responseText.includes('Rejected')) {
+      console.log('Lead was rejected:', responseText);
+      return { 
+        success: false, 
+        error: responseText
+      };
+    }
+
+    // Default success response if we can't determine specific message
+    return { 
+      success: true, 
+      lead_id: lead_id,
+      message: responseText
+    };
   } catch (error) {
     console.error('Error submitting form data:', error);
     return { success: false, error: error.message };
