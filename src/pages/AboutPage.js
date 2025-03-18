@@ -54,7 +54,7 @@ const AboutPage = () => {
             <p>You're not just a claim number to us—you're our neighbor, our community member, and someone who deserves unwavering support during this challenging time.</p>
             
             <div className="mission-image">
-              <img src="/images/community-recovery.jpg" alt="California community coming together after wildfire" />
+              <img src="/cali fires photo.jpg" alt="California community coming together after wildfire" />
               <div className="image-caption">Communities rebuilding together after the Palisades Fire, 2025</div>
             </div>
             
