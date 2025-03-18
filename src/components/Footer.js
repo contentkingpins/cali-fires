@@ -17,9 +17,8 @@ const Footer = () => {
           
           <div className="footer-section contact">
             <h3>Contact Us</h3>
-            <p><i className="fas fa-phone"></i> (800) 555-1234</p>
-            <p><i className="fas fa-envelope"></i> info@wildfireclaimslawyers.com</p>
-            <p><i className="fas fa-map-marker-alt"></i> 123 Legal Street, Los Angeles, CA 90001</p>
+            <p>Please use our eligibility form to get in touch with our team regarding wildfire claims.</p>
+            <p><Link to="/#eligibility-form" className="contact-cta">Check Your Eligibility Now →</Link></p>
           </div>
           
           <div className="footer-section links">

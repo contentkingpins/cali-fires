@@ -94,10 +94,8 @@ const LegalPage = () => {
             </ul>
             
             <h3>6. Contact Us</h3>
-            <p>If you have questions or concerns about this Privacy Policy, please contact us at:</p>
-            <p>Email: privacy@wildfireclaimslawyers.com<br />
-            Phone: (800) 555-1234<br />
-            Address: 123 Legal Street, Los Angeles, CA 90001</p>
+            <p>If you have questions or concerns about this Privacy Policy, please contact us through our eligibility form on the homepage.</p>
+            <p>We're committed to protecting your privacy and will respond to inquiries in a timely manner.</p>
           </div>
         </div>
       </section>
@@ -164,10 +162,8 @@ const LegalPage = () => {
             <p>Our website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy of information on these websites.</p>
             
             <h3>Contact Information</h3>
-            <p>If you have any questions about this disclaimer, please contact us at:</p>
-            <p>Email: info@wildfireclaimslawyers.com<br />
-            Phone: (800) 555-1234<br />
-            Address: 123 Legal Street, Los Angeles, CA 90001</p>
+            <p>If you have any questions about this disclaimer, please contact us through our eligibility form on the homepage.</p>
+            <p>Our team is ready to assist you with any inquiries regarding our legal policies and services.</p>
           </div>
         </div>
       </section>
