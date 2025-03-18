@@ -8,53 +8,92 @@ const AboutPage = () => {
     <div className="about-page">
       <header className="about-header">
         <div className="container">
-          <h1>About Our Firm</h1>
-          <p className="tagline">Dedicated advocates for California wildfire victims since 2010</p>
+          <h1>About Cali Fire Claim Center</h1>
+          <p className="tagline">Your compassionate guides on the road to recovery</p>
         </div>
       </header>
 
-      <section className="mission-section">
+      <section className="intro-section">
         <div className="container">
-          <div className="mission-content">
-            <h2>Our Mission</h2>
-            <p>In the wake of devastating California wildfires, we stand with victims as their unwavering advocates. Our mission is simple yet powerful: to ensure that every person affected by the 2025 wildfires receives the full compensation they deserve.</p>
-            <p>The Palisades, Eaton, Hurst, Lidia, Sunset, and Kenneth fires have left communities shattered and lives forever changed. We believe that behind every insurance claim is a family trying to rebuild their life—and we fight tirelessly to make that rebuilding possible.</p>
+          <div className="intro-content">
+            <h2>Standing Together in the Wake of Devastation</h2>
+            <p>The 2025 California wildfires—Palisades, Eaton, Hurst, Lidia, Sunset, and Kenneth—have left unimaginable destruction in their path. Homes reduced to ash, cherished possessions lost forever, and communities forever changed.</p>
+            <p>We understand that behind every insurance claim is a family trying to piece their lives back together. This isn't just about compensation—it's about recovery, healing, and hope for the future.</p>
+            
+            <div className="animated-stat-container">
+              <div className="animated-stat">
+                <div className="stat-icon"><i className="fas fa-home"></i></div>
+                <div className="stat-number">5,000+</div>
+                <div className="stat-text">Families Helped</div>
+              </div>
+              <div className="animated-stat">
+                <div className="stat-icon"><i className="fas fa-dollar-sign"></i></div>
+                <div className="stat-number">$500M+</div>
+                <div className="stat-text">Recovered</div>
+              </div>
+              <div className="animated-stat">
+                <div className="stat-icon"><i className="fas fa-fire-extinguisher"></i></div>
+                <div className="stat-number">15+</div>
+                <div className="stat-text">Years Experience</div>
+              </div>
+            </div>
+            
             <div className="cta-box">
-              <h3>Don't wait to seek the compensation you deserve</h3>
+              <h3>You don't have to face this alone</h3>
               <Link to="/#eligibility-form" className="btn btn-primary">Check Your Eligibility Now →</Link>
-              <a href="tel:8005551234" className="btn btn-secondary">📞 Call Now for Immediate Assistance</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="expertise-section">
+      <section className="mission-section">
         <div className="container">
-          <h2>Our Expertise in Wildfire Litigation</h2>
+          <div className="mission-content">
+            <h2>Our Mission: Your Recovery</h2>
+            <p>At Cali Fire Claim Center, our mission is simple yet powerful: to compassionately guide wildfire victims through the complex claims process and secure the maximum compensation they deserve so they can rebuild their lives.</p>
+            <p>You're not just a claim number to us—you're our neighbor, our community member, and someone who deserves unwavering support during this challenging time.</p>
+            
+            <div className="mission-image">
+              <img src="/images/community-recovery.jpg" alt="California community coming together after wildfire" />
+              <div className="image-caption">Communities rebuilding together after the Palisades Fire, 2025</div>
+            </div>
+            
+            <div className="cta-box">
+              <h3>Time is limited to file your claim</h3>
+              <p>Don't miss your opportunity for the compensation you deserve.</p>
+              <Link to="/#eligibility-form" className="btn btn-primary">Check Your Eligibility Now →</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="why-choose-section">
+        <div className="container">
+          <h2>Why Choose Cali Fire Claim Center</h2>
           <div className="expertise-grid">
             <div className="expertise-card">
-              <div className="icon"><i className="fas fa-fire-extinguisher"></i></div>
-              <h3>15+ Years Experience</h3>
-              <p>Our attorneys have specialized in wildfire litigation for over 15 years, handling cases from the state's most devastating fires.</p>
+              <div className="icon"><i className="fas fa-heart"></i></div>
+              <h3>Compassionate Support</h3>
+              <p>We treat every client with the care, respect, and individual attention they deserve during this difficult time.</p>
             </div>
             <div className="expertise-card">
-              <div className="icon"><i className="fas fa-dollar-sign"></i></div>
-              <h3>$500M+ Recovered</h3>
-              <p>We've secured over half a billion dollars in compensation for wildfire victims throughout California.</p>
+              <div className="icon"><i className="fas fa-fire-alt"></i></div>
+              <h3>Wildfire Specialists</h3>
+              <p>Our team is exclusively dedicated to helping California wildfire victims recover what they've lost.</p>
             </div>
             <div className="expertise-card">
-              <div className="icon"><i className="fas fa-users"></i></div>
-              <h3>5,000+ Families Helped</h3>
-              <p>We've helped thousands of families rebuild their lives after devastating wildfire losses.</p>
+              <div className="icon"><i className="fas fa-hands-helping"></i></div>
+              <h3>Community-Focused</h3>
+              <p>As Californians ourselves, we're deeply invested in helping our communities rebuild and recover.</p>
             </div>
             <div className="expertise-card">
-              <div className="icon"><i className="fas fa-gavel"></i></div>
-              <h3>Proven Track Record</h3>
-              <p>Our success rate against insurance companies and negligent utilities speaks for itself.</p>
+              <div className="icon"><i className="fas fa-shield-alt"></i></div>
+              <h3>No Risk Approach</h3>
+              <p>We only get paid if you do. There are no upfront costs, and consultation is always free.</p>
             </div>
           </div>
           <div className="cta-centered">
-            <p className="cta-text">Time is limited to file your 2025 wildfire claim. Don't delay.</p>
+            <p className="cta-text">Join thousands of Californians who have successfully rebuilt their lives.</p>
             <Link to="/#eligibility-form" className="btn btn-primary btn-lg">Check Your Eligibility Now →</Link>
           </div>
         </div>
@@ -64,88 +103,95 @@ const AboutPage = () => {
         <div className="container">
           <div className="approach-content">
             <h2>Our Compassionate Approach</h2>
-            <p>We understand that you're not just another case number. You're a person who has experienced a traumatic loss, and you deserve both justice and compassion.</p>
+            <p>We understand that dealing with the aftermath of a wildfire is overwhelming. That's why we've developed a supportive, stress-free process to help you recover.</p>
             
             <div className="approach-features">
               <div className="feature">
+                <div className="feature-icon"><i className="fas fa-user-friends"></i></div>
                 <h3>Personalized Attention</h3>
-                <p>Every client works directly with our senior attorneys—never passed off to junior staff or paralegals.</p>
+                <p>Every client receives dedicated support from experienced specialists who understand the nuances of wildfire recovery.</p>
               </div>
               <div className="feature">
+                <div className="feature-icon"><i className="fas fa-hand-holding-usd"></i></div>
                 <h3>No Upfront Costs</h3>
                 <p>We work on a contingency basis, meaning you pay nothing unless we win your case.</p>
               </div>
               <div className="feature">
+                <div className="feature-icon"><i className="fas fa-tasks"></i></div>
                 <h3>Simplified Process</h3>
                 <p>We handle all the complex paperwork, evidence gathering, and negotiations so you can focus on rebuilding.</p>
               </div>
               <div className="feature">
-                <h3>Regular Updates</h3>
-                <p>We keep you informed at every stage of your case with clear, jargon-free communication.</p>
+                <div className="feature-icon"><i className="fas fa-comments"></i></div>
+                <h3>Clear Communication</h3>
+                <p>We keep you informed at every stage with clear, jargon-free updates about your claim's progress.</p>
               </div>
             </div>
             
-            <div className="testimonial">
+            <div className="testimonial fade-in">
               <blockquote>
-                "After losing everything in the wildfire, I felt completely lost. This firm not only secured compensation far beyond what my insurance offered, but they treated me with genuine care throughout the process. They gave me hope when I needed it most."
+                "After losing everything in the Palisades Fire, I felt completely lost. Cali Fire Claim Center not only secured compensation far beyond what my insurance offered, but they treated me with genuine care throughout the process. They gave me hope when I needed it most."
               </blockquote>
               <cite>— Maria C., Palisades Fire Survivor</cite>
+            </div>
+            
+            <div className="testimonial fade-in">
+              <blockquote>
+                "The team at Cali Fire Claim Center understood that this wasn't just about money—it was about rebuilding our lives. They fought for us when the insurance company tried to minimize our losses. I'm forever grateful for their compassion and determination."
+              </blockquote>
+              <cite>— James T., Eaton Fire Survivor</cite>
             </div>
             
             <div className="cta-box urgent">
               <h3>The time to act is now</h3>
               <p>Legal deadlines for 2025 wildfire claims are approaching. Don't miss your opportunity for justice.</p>
-              <div className="cta-buttons">
-                <a href="tel:8005551234" className="btn btn-secondary btn-lg">📞 Call Now for Immediate Assistance</a>
-                <Link to="/#eligibility-form" className="btn btn-primary btn-lg">Check Your Eligibility Now →</Link>
-              </div>
+              <Link to="/#eligibility-form" className="btn btn-primary btn-lg">Check Your Eligibility Now →</Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="team-section">
+      <section className="community-section">
         <div className="container">
-          <h2>Our Leadership Team</h2>
-          <p className="section-intro">Meet the experienced attorneys who will fight for your rights</p>
-          
-          <div className="team-grid">
-            <div className="team-member">
-              <div className="member-photo"></div>
-              <h3>Jennifer Martinez, Esq.</h3>
-              <p className="member-title">Founding Partner</p>
-              <p>Specializing in utility negligence cases with over 20 years of experience in wildfire litigation.</p>
+          <h2>Committed to Our California Communities</h2>
+          <div className="community-content">
+            <p>Beyond providing legal assistance, we're deeply committed to the long-term recovery of communities affected by the 2025 wildfires. We participate in local rebuilding efforts, support community resilience programs, and advocate for better wildfire prevention and response measures.</p>
+            
+            <div className="community-initiatives">
+              <div className="initiative">
+                <div className="initiative-icon"><i className="fas fa-hands"></i></div>
+                <h3>Volunteer Support</h3>
+                <p>Our team regularly volunteers with local recovery organizations throughout affected communities.</p>
+              </div>
+              <div className="initiative">
+                <div className="initiative-icon"><i className="fas fa-seedling"></i></div>
+                <h3>Reforestation Efforts</h3>
+                <p>We partner with environmental groups to help restore California's precious natural landscapes.</p>
+              </div>
+              <div className="initiative">
+                <div className="initiative-icon"><i className="fas fa-book"></i></div>
+                <h3>Educational Resources</h3>
+                <p>We provide free educational workshops to help communities prepare for and recover from wildfires.</p>
+              </div>
             </div>
-            <div className="team-member">
-              <div className="member-photo"></div>
-              <h3>Michael Chen, Esq.</h3>
-              <p className="member-title">Senior Partner</p>
-              <p>Former insurance defense attorney who now exclusively represents wildfire victims.</p>
+            
+            <div className="hope-message">
+              <h3>There is hope after devastation</h3>
+              <p>While we can't undo the damage caused by the wildfires, we can walk alongside you on the path to recovery, providing the legal support and resources you need to rebuild.</p>
             </div>
-            <div className="team-member">
-              <div className="member-photo"></div>
-              <h3>Sarah Johnson, Esq.</h3>
-              <p className="member-title">Lead Trial Attorney</p>
-              <p>Has secured multiple seven-figure verdicts for California wildfire victims.</p>
-            </div>
-          </div>
-          
-          <div className="cta-centered">
-            <p className="cta-text">Our team is standing by to help you with your 2025 wildfire claim.</p>
-            <a href="tel:8005551234" className="btn btn-secondary btn-lg">📞 Call Now for Immediate Assistance</a>
           </div>
         </div>
       </section>
 
       <section className="final-cta-section">
         <div className="container">
-          <h2>You Deserve Justice and Fair Compensation</h2>
+          <h2>Take the First Step Toward Recovery</h2>
           <p>The 2025 California wildfires have caused immeasurable suffering. While we can't undo the damage, we can help you secure the financial resources needed to rebuild your life.</p>
-          <p>Our team is ready to fight for you against insurance companies and negligent parties. The consultation is free, and you pay nothing unless we win your case.</p>
+          <p>Our compassionate team is ready to fight for you against insurance companies and negligent parties. The consultation is free, and you pay nothing unless we win your case.</p>
           <div className="final-cta-buttons">
             <Link to="/#eligibility-form" className="btn btn-primary btn-xl">Check Your Eligibility Now →</Link>
-            <a href="tel:8005551234" className="btn btn-secondary btn-xl">📞 Call Now for Immediate Assistance</a>
           </div>
+          <p className="final-note">Time limits apply to wildfire claims. Don't wait to get the help you deserve.</p>
         </div>
       </section>
 

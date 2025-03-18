@@ -20,6 +20,84 @@
   opacity: 0.9;
 }
 
+/* Intro Section */
+.intro-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #1a3a3a;
+}
+
+.intro-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* Animated Stats */
+.animated-stat-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 50px 0;
+}
+
+.animated-stat {
+  text-align: center;
+  padding: 20px;
+  margin: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animated-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: #2c5364;
+  margin-bottom: 15px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a3a3a;
+  margin-bottom: 10px;
+}
+
+.stat-text {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Mission Section */
 .mission-section {
   padding: 80px 0;
@@ -44,6 +122,31 @@
   margin-bottom: 25px;
 }
 
+.mission-image {
+  margin: 40px 0;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mission-image img {
+  width: 100%;
+  display: block;
+}
+
+.image-caption {
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 /* CTA Box Styles */
 .cta-box {
   background-color: #f5f5f5;
@@ -60,6 +163,11 @@
   color: #1a3a3a;
 }
 
+.cta-box p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
 .cta-box .btn {
   margin: 10px;
   padding: 12px 24px;
@@ -71,13 +179,13 @@
   border-left: 5px solid #f0b429;
 }
 
-/* Expertise Section */
-.expertise-section {
+/* Why Choose Section */
+.why-choose-section {
   padding: 80px 0;
   background-color: white;
 }
 
-.expertise-section h2 {
+.why-choose-section h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
@@ -153,6 +261,16 @@
   margin-bottom: 50px;
 }
 
+.feature {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: #2c5364;
+  margin-bottom: 15px;
+}
+
 .feature h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
@@ -171,6 +289,10 @@
   border-radius: 8px;
   margin: 40px 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial.fade-in {
+  animation: fadeIn 1s ease-out;
 }
 
 .testimonial blockquote {
@@ -197,59 +319,86 @@
   color: #1a3a3a;
 }
 
-/* Team Section */
-.team-section {
+/* Community Section */
+.community-section {
   padding: 80px 0;
   background-color: white;
 }
 
-.team-section h2 {
+.community-section h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   color: #1a3a3a;
 }
 
-.section-intro {
-  text-align: center;
+.community-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.community-content > p {
   font-size: 1.2rem;
-  margin-bottom: 50px;
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  margin-bottom: 50px;
-}
-
-.team-member {
+  line-height: 1.8;
+  margin-bottom: 40px;
   text-align: center;
 }
 
-.member-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: #e0e0e0;
-  margin: 0 auto 20px;
+.community-initiatives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
 }
 
-.team-member h3 {
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  color: #1a3a3a;
+.initiative {
+  text-align: center;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-.member-title {
+.initiative:hover {
+  transform: translateY(-5px);
+}
+
+.initiative-icon {
+  font-size: 2.2rem;
   color: #2c5364;
-  font-weight: 600;
   margin-bottom: 15px;
 }
 
-.team-member p {
+.initiative h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #1a3a3a;
+}
+
+.initiative p {
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.hope-message {
+  background-color: #f5f7fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 40px 0;
+  text-align: center;
+  border-left: 5px solid #2c5364;
+}
+
+.hope-message h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #1a3a3a;
+}
+
+.hope-message p {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 /* CTA Centered */
@@ -289,6 +438,13 @@
 
 .final-cta-buttons {
   margin-top: 40px;
+}
+
+.final-note {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #f0b429;
+  margin-top: 30px;
 }
 
 .btn-xl {
@@ -342,18 +498,36 @@
     font-size: 2.5rem;
   }
   
+  .intro-content h2,
   .mission-content h2,
-  .expertise-section h2,
+  .why-choose-section h2,
   .approach-content h2,
-  .team-section h2,
+  .community-section h2,
   .final-cta-section h2 {
     font-size: 2rem;
   }
   
+  .intro-content p,
   .mission-content p,
   .approach-content > p,
+  .community-content > p,
   .final-cta-section p {
     font-size: 1.1rem;
+  }
+  
+  .animated-stat-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .animated-stat {
+    width: 100%;
+    max-width: 250px;
+    margin: 10px 0;
+  }
+  
+  .mission-image {
+    margin: 30px 0;
   }
   
   .cta-box {
@@ -362,7 +536,8 @@
   
   .expertise-grid,
   .approach-features,
-  .team-grid {
+  .community-initiatives {
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   
@@ -373,5 +548,9 @@
   .btn-xl {
     padding: 12px 24px;
     font-size: 1.1rem;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
   }
 } 
