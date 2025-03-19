@@ -11,63 +11,41 @@ const LossAmount = ({ formData, handleInputChange, nextStep, prevStep }) => {
   
   return (
     <div>
-      <h3 className="form-question">What is the estimated total value of your losses?</h3>
+      <h3 className="form-question">What would you estimate the total cost of damages that the fire caused, including damage to your home, vehicles, and valuables?</h3>
       <p className="form-description">Please provide your best estimate of the total damages.</p>
       
       <div className="radio-group">
         <div className="radio-item">
           <input 
             type="radio" 
-            id="loss-under10k" 
+            id="loss-50kto199k" 
             name="lossAmount" 
-            checked={formData.lossAmount === 'under10k'} 
-            onChange={() => handleInputChange('lossAmount', 'under10k')} 
+            checked={formData.lossAmount === '50kto199k'} 
+            onChange={() => handleInputChange('lossAmount', '50kto199k')} 
           />
-          <label htmlFor="loss-under10k">Less than $10,000</label>
+          <label htmlFor="loss-50kto199k">$50k to $199k</label>
         </div>
         
         <div className="radio-item">
           <input 
             type="radio" 
-            id="loss-10kto25k" 
+            id="loss-200kto299k" 
             name="lossAmount" 
-            checked={formData.lossAmount === '10kto25k'} 
-            onChange={() => handleInputChange('lossAmount', '10kto25k')} 
+            checked={formData.lossAmount === '200kto299k'} 
+            onChange={() => handleInputChange('lossAmount', '200kto299k')} 
           />
-          <label htmlFor="loss-10kto25k">$10,000 - $25,000</label>
+          <label htmlFor="loss-200kto299k">$200k to $299k</label>
         </div>
         
         <div className="radio-item">
           <input 
             type="radio" 
-            id="loss-25kto50k" 
+            id="loss-300kplus" 
             name="lossAmount" 
-            checked={formData.lossAmount === '25kto50k'} 
-            onChange={() => handleInputChange('lossAmount', '25kto50k')} 
+            checked={formData.lossAmount === '300kplus'} 
+            onChange={() => handleInputChange('lossAmount', '300kplus')} 
           />
-          <label htmlFor="loss-25kto50k">$25,000 - $50,000</label>
-        </div>
-        
-        <div className="radio-item">
-          <input 
-            type="radio" 
-            id="loss-over50k" 
-            name="lossAmount" 
-            checked={formData.lossAmount === 'over50k'} 
-            onChange={() => handleInputChange('lossAmount', 'over50k')} 
-          />
-          <label htmlFor="loss-over50k">More than $50,000</label>
-        </div>
-        
-        <div className="radio-item">
-          <input 
-            type="radio" 
-            id="loss-unsure" 
-            name="lossAmount" 
-            checked={formData.lossAmount === 'unsure'} 
-            onChange={() => handleInputChange('lossAmount', 'unsure')} 
-          />
-          <label htmlFor="loss-unsure">I'm not sure</label>
+          <label htmlFor="loss-300kplus">$300k or more</label>
         </div>
       </div>
       

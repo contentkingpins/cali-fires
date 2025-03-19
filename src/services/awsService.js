@@ -71,12 +71,15 @@ export const submitToDynamoDB = async (formData) => {
     
     // Map loss amount to required format
     const mapEstimate = (lossAmount) => {
-      if (lossAmount === 'over50k') {
-        return '50k to $499k';
-      } else if (lossAmount === 'over500k') {
-        return '$500k or more';
+      if (lossAmount === '50kto199k') {
+        return '$50k to $199k';
+      } else if (lossAmount === '200kto299k') {
+        return '$200k to $299k';
+      } else if (lossAmount === '300kplus') {
+        return '$300k or more';
       } else {
-        return '50k to $499k'; // Default to the qualified value
+        // Default to a valid option if none selected
+        return '$50k to $199k';
       }
     };
     

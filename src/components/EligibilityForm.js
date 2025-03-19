@@ -133,8 +133,8 @@ const EligibilityForm = ({ scrollToResults }) => {
     const hasInjuryClaim = data.lossTypes.includes('injury');
     if (hasInjuryClaim && (!data.soughtMedicalAttention || data.medicalTimeframe !== 'within10days')) return false;
     
-    // Check loss amount
-    if (data.lossAmount !== 'over50k') return false;
+    // Check loss amount - any of the values is valid for eligibility
+    if (!data.lossAmount || !['50kto199k', '200kto299k', '300kplus'].includes(data.lossAmount)) return false;
     
     // Check legal representation
     if (data.hasLegalRepresentation) return false;
