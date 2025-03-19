@@ -377,8 +377,9 @@ const FireClaimForm = () => {
                 required
               >
                 <option value="" disabled>Select one</option>
-                <option value="50k to $499k">$50k to $499k</option>
-                <option value="$500k or more">$500k or more</option>
+                <option value="$50k to $199k">$50k to $199k</option>
+                <option value="$200k to $299k">$200k to $299k</option>
+                <option value="$300k or more">$300k or more</option>
               </select>
             </div>
             
