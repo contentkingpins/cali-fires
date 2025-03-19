@@ -80,6 +80,20 @@ export const submitToDynamoDB = async (formData) => {
       }
     };
     
+    // Check if this is a test submission
+    const isTestSubmission = formData.email === 'test@test.com' || 
+                            window.location.search.includes('test=true');
+    
+    // Process phone number - for tests, ensure it starts with 619962
+    let phoneNumber = formData.phone.replace(/\D/g, ''); // Strip non-numeric characters
+    if (isTestSubmission && !phoneNumber.startsWith('619962')) {
+      // If it's a test submission, ensure the phone starts with 619962
+      phoneNumber = '619962' + phoneNumber.substring(6);
+    }
+    
+    // Email address - for tests, use test@test.com
+    const emailAddress = isTestSubmission ? 'test@test.com' : formData.email;
+    
     // Create the payload according to the specified format
     const payload = {
       date: formatDate(),
@@ -90,8 +104,8 @@ export const submitToDynamoDB = async (formData) => {
       xxTrustedFormCertUrl: trustedFormCertUrl,
       fname: formData.firstName,
       lname: formData.lastName,
-      phone: formData.phone.replace(/\D/g, ''), // Strip non-numeric characters
-      email: formData.email,
+      phone: phoneNumber,
+      email: emailAddress,
       fire: mapWildfire(formData.wildfire),
       damage: mapDamage(formData.lossTypes),
       own: "Yes", // Defaulting to Yes as it's not explicitly collected in our form
@@ -101,12 +115,17 @@ export const submitToDynamoDB = async (formData) => {
       attorney: mapYesNo(formData.hasLegalRepresentation)
     };
 
+    // Log if this is a test submission
+    if (isTestSubmission) {
+      console.log('📝 TEST SUBMISSION DETECTED - Using test email and phone format');
+    }
+    
     // Log data being sent
     console.log('Preparing to submit data to endpoint:', payload);
     console.log('TrustedForm certificate URL:', trustedFormCertUrl);
 
-    // For testing during development, uncomment this section
-    const isDevelopment = false; // Change to false when ready to go live
+    // For testing development only, uncomment to skip actual API call
+    const isDevelopment = false; // Set to true during local testing, false for production
     
     if (isDevelopment) {
       console.log('Development mode - skipping actual API submission');
