@@ -549,4 +549,32 @@
   opacity: 1 !important;
   visibility: visible !important;
   position: static !important;
+}
+
+/* Fix for TCPA checkboxes */
+#tcpa-consent-checkbox,
+#fire-claim-tcpa-checkbox,
+.tcpa-consent-input {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  pointer-events: auto !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  margin-right: 10px !important;
+  appearance: checkbox !important;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  z-index: 999 !important;
+}
+
+label:has(#tcpa-consent-checkbox),
+label:has(#fire-claim-tcpa-checkbox),
+label:has(.tcpa-consent-input) {
+  display: flex !important;
+  align-items: flex-start !important;
+  cursor: pointer !important;
+  padding-left: 0 !important;
 } 

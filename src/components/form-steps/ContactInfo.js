@@ -22,6 +22,19 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
         height: 0 !important;
       }
       
+      /* Exception for the TCPA checkbox */
+      #tcpa-consent-checkbox,
+      .tcpa-consent-input {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        pointer-events: auto !important;
+        z-index: auto !important;
+        width: auto !important;
+        height: 20px !important;
+      }
+      
       /* Reset labels to not have circles */
       .form-step h3:contains("Contact Information") ~ * label::before,
       .form-step h3:contains("Contact Information") ~ * label::after,
@@ -51,6 +64,21 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
         position: static !important;
         opacity: 1 !important;
         visibility: visible !important;
+      }
+      
+      /* Style for the TCPA checkbox */
+      #contactForm input#tcpa-consent-checkbox {
+        display: inline-block !important;
+        width: auto !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        margin-right: 10px !important;
+      }
+      
+      /* Ensure proper TCPA label styling */
+      #contactForm label:has(#tcpa-consent-checkbox) {
+        display: flex !important;
+        align-items: flex-start !important;
       }
     `;
     document.head.appendChild(style);
@@ -116,6 +144,14 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
               if (sib !== contactContainer) {
                 // Check if it's a radio button or contains one
                 const radioButtons = sib.querySelectorAll('input[type="radio"]');
+                
+                // Skip TCPA consent checkbox
+                const isTcpaCheckbox = sib.querySelectorAll('#tcpa-consent-checkbox, .tcpa-consent-input').length > 0;
+                if (isTcpaCheckbox) {
+                  console.log("Found TCPA checkbox, skipping...");
+                  return;
+                }
+                
                 if (radioButtons.length > 0 || 
                     sib.tagName === 'INPUT' && sib.type === 'radio' ||
                     (sib.className && sib.className.includes('radio'))) {
@@ -365,6 +401,18 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
           display: none !important;
           content: none !important;
         }
+        
+        /* Explicitly show TCPA checkbox */
+        #tcpa-consent-checkbox, 
+        .tcpa-consent-input {
+          display: inline-block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 20px !important;
+          height: 20px !important;
+          margin-right: 10px !important;
+          position: static !important;
+        }
       `}} />
       
       {/* TrustedForm script tag with identifier and consent tags */}
@@ -575,12 +623,22 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
             <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
               <input
                 type="checkbox"
+                id="tcpa-consent-checkbox"
+                className="tcpa-consent-input"
+                name="tcpaConsent"
                 required
                 style={{ 
                   marginRight: '10px', 
                   marginTop: '3px',
                   width: 'auto',
-                  padding: 0
+                  height: '20px',
+                  minWidth: '20px',
+                  padding: 0,
+                  opacity: '1 !important',
+                  visibility: 'visible !important',
+                  display: 'inline-block !important',
+                  position: 'static !important',
+                  pointerEvents: 'auto !important'
                 }}
               />
               <span style={{ fontSize: '0.875rem', lineHeight: '1.4' }}>

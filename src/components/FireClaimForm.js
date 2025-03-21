@@ -422,10 +422,20 @@ const FireClaimForm = () => {
               <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
+                  id="fire-claim-tcpa-checkbox"
+                  className="tcpa-consent-input"
+                  name="tcpaConsent"
                   required
                   style={{ 
                     marginRight: '10px', 
-                    marginTop: '3px'
+                    marginTop: '3px',
+                    width: '20px',
+                    height: '20px',
+                    minWidth: '20px',
+                    display: 'inline-block',
+                    visibility: 'visible',
+                    opacity: 1,
+                    position: 'static'
                   }}
                 />
                 <span style={{ fontSize: '0.9rem', lineHeight: '1.4' }}>
