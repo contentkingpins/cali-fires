@@ -570,6 +570,25 @@ const ContactInfo = ({ formData, handleInputChange, prevStep, handleSubmit, isSu
             </p>
           </div>
           
+          {/* TCPA Compliance Checkbox */}
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                required
+                style={{ 
+                  marginRight: '10px', 
+                  marginTop: '3px',
+                  width: 'auto',
+                  padding: 0
+                }}
+              />
+              <span style={{ fontSize: '0.875rem', lineHeight: '1.4' }}>
+                I consent to be contacted by automated technology regarding my inquiry. I understand this is not a condition of purchase.
+              </span>
+            </label>
+          </div>
+          
           {/* Form Buttons */}
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <button

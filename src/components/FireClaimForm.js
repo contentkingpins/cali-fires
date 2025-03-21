@@ -417,6 +417,23 @@ const FireClaimForm = () => {
           </div>
           
           <div className="form-actions">
+            {/* TCPA Compliance Checkbox */}
+            <div className="form-group tcpa-consent" style={{ marginBottom: '20px', textAlign: 'left' }}>
+              <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  required
+                  style={{ 
+                    marginRight: '10px', 
+                    marginTop: '3px'
+                  }}
+                />
+                <span style={{ fontSize: '0.9rem', lineHeight: '1.4' }}>
+                  I consent to be contacted by automated technology regarding my inquiry. I understand this is not a condition of purchase.
+                </span>
+              </label>
+            </div>
+            
             <button 
               type="submit" 
               className="submit-button"
